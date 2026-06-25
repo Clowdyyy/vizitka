@@ -1,7 +1,7 @@
 import json
 import os
 import logging
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 
@@ -31,7 +31,7 @@ def track_user(user_id: int, full_name: str, username: str | None):
     stats = load_stats()
     stats["views"] += 1
     uid = str(user_id)
-    now = datetime.now().strftime("%d.%m.%Y %H:%M")
+    now = datetime.now(timezone(timedelta(hours=5))).strftime("%d.%m.%Y %H:%M")
     if uid not in stats["users"]:
         stats["users"][uid] = {
             "name": full_name,
