@@ -73,13 +73,14 @@ async def cmd_stats(message: Message):
         name = info.get("name", "Неизвестно")
         uname = info.get("username")
         starts = info.get("starts", 0)
+        last_seen = info.get("last_seen", "—")
         tag = f"@{uname}" if uname else "нет юзернейма"
         user_rating = rating_map.get(uid)
         if user_rating:
             rating_str = f" — ⭐ {user_rating}/5"
         else:
             rating_str = " — не голосовал"
-        lines.append(f"  • <b>{name}</b> ({tag}) — {starts} запусков{rating_str}")
+        lines.append(f"  • <b>{name}</b> ({tag}) — {starts} запусков | {last_seen}{rating_str}")
 
     await message.answer("\n".join(lines))
 

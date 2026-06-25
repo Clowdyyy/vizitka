@@ -31,14 +31,17 @@ def track_user(user_id: int, full_name: str, username: str | None):
     stats = load_stats()
     stats["views"] += 1
     uid = str(user_id)
+    now = datetime.now().strftime("%d.%m.%Y %H:%M")
     if uid not in stats["users"]:
         stats["users"][uid] = {
             "name": full_name,
             "username": username,
-            "first_seen": datetime.now().isoformat(),
+            "first_seen": now,
+            "last_seen": now,
             "starts": 0,
         }
     stats["users"][uid]["starts"] += 1
+    stats["users"][uid]["last_seen"] = now
     stats["users"][uid]["name"] = full_name
     if username:
         stats["users"][uid]["username"] = username
