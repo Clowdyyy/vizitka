@@ -8,6 +8,7 @@ from data.projects import WELCOME_TEXT, ABOUT_TEXT, HELP_TEXT
 from keyboards.inline import (
     get_main_keyboard,
     get_contact_keyboard,
+    get_stats_keyboard,
 )
 from utils import simulate_typing, is_user_rate_limited, safe_edit
 from handlers.rating import track_user, load_stats
@@ -49,6 +50,25 @@ async def cmd_stats(message: Message):
         await message.answer("⛔ У вас нет доступа к этой команде.")
         return
 
+    await _show_stats_page(message, page=1)
+
+
+@router.callback_query(F.data.startswith("stats_page:"))
+async def stats_page_callback(callback: CallbackQuery):
+    if callback.from_user.id != YOUR_TELEGRAM_ID:
+        await callback.answer("⛔ Нет доступа.", show_alert=True)
+        return
+
+    await callback.answer()
+    try:
+        page = int(callback.data.split(":")[1])
+    except (IndexError, ValueError):
+        return
+
+    await _show_stats_page(callback.message, page)
+
+
+async def _show_stats_page(message, page: int):
     stats = load_stats()
     users = stats.get("users", {})
     total_users = len(users)
@@ -61,28 +81,47 @@ async def cmd_stats(message: Message):
     for r in ratings:
         rating_map[str(r["user_id"])] = r["rating"]
 
-    lines = [
-        "📊 <b>Полная статистика бота</b>\n",
-        f"👥 Пользователей: <b>{total_users}</b>",
-        f"👀 Всего запусков /start: <b>{total_views}</b>",
-        f"⭐ Оценок: <b>{total_ratings}</b> (средняя: <b>{avg_rating:.1f}</b>)",
-        "\n<b>Кто запускал бота:</b>",
-    ]
+    per_page = 10
+    total_pages = max(1, (total_users + per_page - 1) // per_page)
+    page = max(1, min(page, total_pages))
 
-    for uid, info in users.items():
+    user_items = list(users.items())
+    start_idx = (page - 1) * per_page
+    end_idx = start_idx + per_page
+    page_users = user_items[start_idx:end_idx]
+
+    header = (
+        "📊 <b>Панель управления</b>\n\n"
+        f"👥 Пользователей: <b>{total_users}</b> | "
+        f"👀 Запусков: <b>{total_views}</b> | "
+        f"⭐ Средняя: <b>{avg_rating:.1f}</b>\n\n"
+        f"<b>Пользователи (стр. {page}/{total_pages}):</b>\n"
+    )
+
+    emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
+
+    lines = [header]
+    for i, (uid, info) in enumerate(page_users):
         name = info.get("name", "Неизвестно")
         uname = info.get("username")
         starts = info.get("starts", 0)
         last_seen = info.get("last_seen", "—")
         tag = f"@{uname}" if uname else "нет юзернейма"
         user_rating = rating_map.get(uid)
-        if user_rating:
-            rating_str = f" — ⭐ {user_rating}/5"
-        else:
-            rating_str = " — не голосовал"
-        lines.append(f"  • <b>{name}</b> ({tag}) — {starts} запусков | {last_seen}{rating_str}")
+        rating_str = f"⭐ {user_rating}/5" if user_rating else "не голосовал"
 
-    await message.answer("\n".join(lines))
+        emoji = emojis[i] if i < len(emojis) else "▫️"
+        lines.append(
+            f"{emoji} <b>{name}</b> ({tag})\n"
+            f"   🚀 {starts} запусков | 📅 {last_seen}\n"
+            f"   {rating_str}"
+        )
+
+    text = "\n\n".join(lines)
+    keyboard = get_stats_keyboard(page, total_pages)
+
+    from utils import safe_edit
+    await safe_edit(message, text=text, reply_markup=keyboard)
 
 
 @router.callback_query(F.data == "show_about")

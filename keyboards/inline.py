@@ -54,6 +54,22 @@ def get_contact_keyboard() -> InlineKeyboardMarkup:
     ])
 
 
+def get_stats_keyboard(page: int, total_pages: int) -> InlineKeyboardMarkup:
+    buttons = []
+
+    nav_row = []
+    if page > 1:
+        nav_row.append(InlineKeyboardButton(text="◀️", callback_data=f"stats_page:{page - 1}"))
+    nav_row.append(InlineKeyboardButton(text=f"▫️ {page} / {total_pages} ▫️", callback_data="noop"))
+    if page < total_pages:
+        nav_row.append(InlineKeyboardButton(text="▶️", callback_data=f"stats_page:{page + 1}"))
+    buttons.append(nav_row)
+
+    buttons.append([InlineKeyboardButton(text="⬅️ Назад в меню", callback_data="back_to_main")])
+
+    return InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
 def get_rating_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [

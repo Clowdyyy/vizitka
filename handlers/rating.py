@@ -7,6 +7,7 @@ from aiogram.types import CallbackQuery
 
 from data.projects import RATING_TEXT, STATS_TEXT
 from keyboards.inline import get_rating_keyboard, get_main_keyboard
+from config import YOUR_TELEGRAM_ID
 from utils import safe_edit
 
 router = Router()
@@ -71,12 +72,17 @@ async def show_stats(callback: CallbackQuery):
     await callback.answer()
 
     stats = load_stats()
-    text = STATS_TEXT.format(
-        users=len(stats["users"]),
-        views=stats["views"],
-        ratings=len(stats["ratings"]),
-    )
-    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
+
+    if callback.from_user.id == YOUR_TELEGRAM_ID:
+        from handlers.common import _show_stats_page
+        await _show_stats_page(callback.message, page=1)
+    else:
+        text = STATS_TEXT.format(
+            users=len(stats["users"]),
+            views=stats["views"],
+            ratings=len(stats["ratings"]),
+        )
+        await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data.startswith("rate:"))
