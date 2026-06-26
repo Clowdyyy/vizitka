@@ -29,7 +29,7 @@ LINE = "━" * 24
 
 WELCOME_TEXT = (
     f"{LINE}\n"
-    "   АББОСХОН\n"
+    "   ✦ АББОСХОН\n"
     "   Python Developer\n"
     f"{LINE}\n\n"
     "Привет! Я разработчик,\n"
@@ -42,7 +42,7 @@ WELCOME_TEXT = (
 
 ABOUT_TEXT = (
     f"{LINE}\n"
-    "   ОБО МНЕ\n"
+    "   ✦ ОБО МНЕ\n"
     f"{LINE}\n\n"
     "Я Аббосхон — Python-разработчик\n"
     "с фокусом на AI/ML и автоматизацию.\n\n"
@@ -54,7 +54,7 @@ ABOUT_TEXT = (
 
 HELP_TEXT = (
     f"{LINE}\n"
-    "   ПОМОЩЬ\n"
+    "   ✦ ПОМОЩЬ\n"
     f"{LINE}\n\n"
     "/start — Главное меню\n"
     "/help  — Эта справка\n\n"
@@ -63,7 +63,7 @@ HELP_TEXT = (
 
 STATS_TEXT = (
     f"{LINE}\n"
-    "   СТАТИСТИКА\n"
+    "   ✦ СТАТИСТИКА\n"
     f"{LINE}\n\n"
     "Пользователей:  <b>{users}</b>\n"
     "Просмотров:     <b>{views}</b>\n"
@@ -72,7 +72,7 @@ STATS_TEXT = (
 
 RATING_TEXT = (
     f"{LINE}\n"
-    "   СПАСИБО ЗА ОЦЕНКУ\n"
+    "   ✦ СПАСИБО ЗА ОЦЕНКУ\n"
     f"{LINE}\n\n"
     "Твоя оценка: {stars}\n\n"
     "Мне приятно, что тебе понравилось!"
@@ -80,7 +80,7 @@ RATING_TEXT = (
 
 CONTACT_PROMPT = (
     f"{LINE}\n"
-    "   НАПИШИТЕ МНЕ\n"
+    "   ✦ НАПИШИТЕ МНЕ\n"
     f"{LINE}\n\n"
     "Введите ваше сообщение\n"
     "и я отвечу вам."
@@ -88,7 +88,7 @@ CONTACT_PROMPT = (
 
 CONTACT_SENT = (
     f"{LINE}\n"
-    "   ОТПРАВЛЕНО\n"
+    "   ✦ ОТПРАВЛЕНО\n"
     f"{LINE}\n\n"
     "Сообщение доставлено.\n"
     "Спасибо за обращение!"

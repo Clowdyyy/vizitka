@@ -19,7 +19,7 @@ def format_project(project: dict) -> str:
     stack_tags = " • ".join(f"<code>{s}</code>" for s in project["stack"])
     return (
         f"{LINE}\n"
-        f"   {project['name']}\n"
+        f"   ✦ {project['name']}\n"
         f"{LINE}\n\n"
         f"{project['desc']}\n\n"
         f"▸ Стек: {stack_tags}"

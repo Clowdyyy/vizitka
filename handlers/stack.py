@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 STACK_TEXT = (
     f"{LINE}\n"
-    "   СТЕК ТЕХНОЛОГИЙ\n"
+    "   ✦ СТЕК ТЕХНОЛОГИЙ\n"
     f"{LINE}\n\n"
     "<b>Languages</b>\n"
     "  <code>Python</code>  <code>Java</code>\n\n"

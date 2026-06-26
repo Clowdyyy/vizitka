@@ -59,11 +59,11 @@ async def show_rating(callback: CallbackQuery):
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
             user_rating = r["rating"]
-            text = f"Уже оценено.\n\nВаша оценка: {'★' * user_rating} ({user_rating}/5)"
+            text = f"✦ Уже оценено.\n\nВаша оценка: {'★' * user_rating} ({user_rating}/5)"
             await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
             return
 
-    text = f"{LINE}\n   ОЦЕНИТЕ БОТА\n{LINE}\n\nКак вам портфолио?"
+    text = f"{LINE}\n   ✦ ОЦЕНИТЕ БОТА\n{LINE}\n\nКак вам портфолио?"
     await safe_edit(callback.message, text=text, caption=text, reply_markup=get_rating_keyboard())
 
 
@@ -102,7 +102,7 @@ async def handle_rating(callback: CallbackQuery):
 
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
-            text = "Уже голосовали.\n\nПовторное голосование невозможно."
+            text = "✦ Уже голосовали.\n\nПовторное голосование невозможно."
             await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
             return
 
@@ -117,6 +117,6 @@ async def handle_rating(callback: CallbackQuery):
 
     save_stats(stats)
 
-    stars = "⭐" * rating
+    stars = "★" * rating
     text = RATING_TEXT.format(stars=stars)
     await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())

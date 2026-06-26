@@ -162,7 +162,7 @@ async def handle_contact_message(message: Message, state: FSMContext):
     uname = f"@{user.username}" if user.username else "нет юзернейма"
 
     admin_text = (
-        f"Новое сообщение\n\n"
+        f"✦ Новое сообщение\n\n"
         f"<b>{name}</b> ({uname})\n"
         f"ID: <code>{user.id}</code>\n\n"
         f"{message.text}\n\n"
@@ -188,12 +188,12 @@ async def handle_admin_reply(message: Message):
     try:
         await message.bot.send_message(
             chat_id=user_id,
-            text=f"Ответ от автора:\n\n{message.text}",
+            text=f"✦ Ответ от автора:\n\n{message.text}",
         )
-        await message.answer("Ответ отправлен.", reply_markup=get_main_keyboard())
+        await message.answer("✦ Ответ отправлен.", reply_markup=get_main_keyboard())
     except Exception as e:
         logger.error("Failed to forward reply to user %s: %s", user_id, e)
-        await message.answer("Не удалось отправить ответ.", reply_markup=get_main_keyboard())
+        await message.answer("✦ Не удалось отправить ответ.", reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data == "noop")
