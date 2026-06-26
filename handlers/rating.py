@@ -5,10 +5,11 @@ from datetime import datetime, timezone, timedelta
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 
-from data.projects import RATING_TEXT, STATS_TEXT
+from data.translations import RATING, RATING_ASK, RATING_ALREADY, RATING_DENIED
 from keyboards.inline import get_rating_keyboard, get_main_keyboard
 from config import YOUR_TELEGRAM_ID
 from utils import safe_edit
+from handlers.common import get_lang
 
 router = Router()
 logger = logging.getLogger(__name__)
@@ -55,16 +56,16 @@ async def show_rating(callback: CallbackQuery):
 
     stats = load_stats()
     uid = str(callback.from_user.id)
+    lang = get_lang(callback.from_user.id)
 
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
             user_rating = r["rating"]
-            text = f"✅ <b>Вы уже оценили бота!</b>\n\nВаша оценка: {'⭐' * user_rating} ({user_rating}/5)"
-            await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
+            text = RATING_ALREADY[lang].format(rating=user_rating)
+            await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard(lang))
             return
 
-    text = "⭐ <b>Оцените бота!</b>\n\nКак вам портфолио?"
-    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_rating_keyboard())
+    await safe_edit(callback.message, text=RATING_ASK[lang], caption=RATING_ASK[lang], reply_markup=get_rating_keyboard())
 
 
 @router.callback_query(F.data == "show_stats")
@@ -72,17 +73,19 @@ async def show_stats(callback: CallbackQuery):
     await callback.answer()
 
     stats = load_stats()
+    lang = get_lang(callback.from_user.id)
 
     if callback.from_user.id == YOUR_TELEGRAM_ID:
         from handlers.common import _show_stats_page
         await _show_stats_page(callback.message, page=1)
     else:
-        text = STATS_TEXT.format(
+        from data.translations import STATS
+        text = STATS[lang].format(
             users=len(stats["users"]),
             views=stats["views"],
             ratings=len(stats["ratings"]),
         )
-        await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
+        await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard(lang))
 
 
 @router.callback_query(F.data.startswith("rate:"))
@@ -99,11 +102,11 @@ async def handle_rating(callback: CallbackQuery):
 
     stats = load_stats()
     uid = str(callback.from_user.id)
+    lang = get_lang(callback.from_user.id)
 
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
-            text = "⛔ <b>Вы уже оценили бота!</b>\n\nПовторное голосование невозможно."
-            await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
+            await safe_edit(callback.message, text=RATING_DENIED[lang], caption=RATING_DENIED[lang], reply_markup=get_main_keyboard(lang))
             return
 
     stats["ratings"].append({
@@ -117,6 +120,6 @@ async def handle_rating(callback: CallbackQuery):
 
     save_stats(stats)
 
-    stars = "⭐" * rating
-    text = RATING_TEXT.format(stars=stars)
-    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
+    stars = "\u2b50" * rating
+    text = RATING[lang].format(stars=stars)
+    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard(lang))
