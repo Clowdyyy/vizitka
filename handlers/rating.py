@@ -78,7 +78,7 @@ async def show_rating(callback: CallbackQuery):
             await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard(lang))
             return
 
-    await safe_edit(callback.message, text=RATING_ASK[lang], caption=RATING_ASK[lang], reply_markup=get_rating_keyboard())
+    await safe_edit(callback.message, text=RATING_ASK[lang], caption=RATING_ASK[lang], reply_markup=get_rating_keyboard(lang))
 
 
 @router.callback_query(F.data == "show_stats")
@@ -90,7 +90,7 @@ async def show_stats(callback: CallbackQuery):
 
     if callback.from_user.id == YOUR_TELEGRAM_ID:
         from handlers.common import _show_stats_page
-        await _show_stats_page(callback.message, page=1)
+        await _show_stats_page(callback.message, page=1, lang=lang)
     else:
         from data.translations import STATS
         text = STATS[lang].format(

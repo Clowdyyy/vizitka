@@ -1,6 +1,30 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
+BACK_RU = "\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
+BACK_EN = "\u2b05\ufe0f Back to menu"
+BACK_SHORT_RU = "\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434"
+BACK_SHORT_EN = "\u2b05\ufe0f Back"
+MENU_RU = "\U0001f451 \u041c\u0435\u043d\u044e"
+MENU_EN = "\U0001f451 Menu"
+CANCEL_RU = "\u2b05\ufe0f \u041e\u0442\u043c\u0435\u043d\u0430"
+CANCEL_EN = "\u2b05\ufe0f Cancel"
+DM_RU = "\U0001f4ac \u0412 \u043b\u0438\u0447\u043a\u0443"
+DM_EN = "\U0001f4ac DM"
+RATE_RU = "\u2b50 \u041e\u0446\u0435\u043d\u0438\u0442\u044c"
+RATE_EN = "\u2b50 Rate"
+
+
+def _back(lang):
+    return BACK_RU if lang == "ru" else BACK_EN
+
+def _back_short(lang):
+    return BACK_SHORT_RU if lang == "ru" else BACK_SHORT_EN
+
+def _menu(lang):
+    return MENU_RU if lang == "ru" else MENU_EN
+
+
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
     lang_btn = "\U0001f310 \u042f\u0437\u044b\u043a" if lang == "ru" else "\U0001f310 Language"
@@ -18,9 +42,9 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     ])
 
 
-def get_back_keyboard() -> InlineKeyboardMarkup:
+def get_back_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e", callback_data="back_to_main")]
+        [InlineKeyboardButton(text=_back(lang), callback_data="back_to_main")]
     ])
 
 
@@ -39,28 +63,28 @@ def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
     ]
 
     buttons.append([
-        InlineKeyboardButton(text="\U0001f451 \u041c\u0435\u043d\u044e", callback_data="back_to_main")
+        InlineKeyboardButton(text=MENU_RU, callback_data="back_to_main")
     ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def get_contact_keyboard() -> InlineKeyboardMarkup:
+def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="\U0001f4ac \u0412 \u043b\u0438\u0447\u043a\u0443", url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
-        [InlineKeyboardButton(text="\u2b50 \u041e\u0446\u0435\u043d\u0438\u0442\u044c", callback_data="show_rating")],
-        [InlineKeyboardButton(text="\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434", callback_data="back_to_main")],
+        [InlineKeyboardButton(text=DM_RU if lang == "ru" else DM_EN, url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
+        [InlineKeyboardButton(text=RATE_RU if lang == "ru" else RATE_EN, callback_data="show_rating")],
+        [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
     ])
 
 
-def get_contact_form_keyboard() -> InlineKeyboardMarkup:
+def get_contact_form_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="\u2b05\ufe0f \u041e\u0442\u043c\u0435\u043d\u0430", callback_data="back_to_main")]
+        [InlineKeyboardButton(text=CANCEL_RU if lang == "ru" else CANCEL_EN, callback_data="back_to_main")]
     ])
 
 
-def get_stats_keyboard(page: int, total_pages: int) -> InlineKeyboardMarkup:
+def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineKeyboardMarkup:
     buttons = []
 
     nav_row = []
@@ -71,7 +95,7 @@ def get_stats_keyboard(page: int, total_pages: int) -> InlineKeyboardMarkup:
         nav_row.append(InlineKeyboardButton(text="\u25b6\ufe0f", callback_data=f"stats_page:{page + 1}"))
     buttons.append(nav_row)
 
-    buttons.append([InlineKeyboardButton(text="\u2b05\ufe0f \u041c\u0435\u043d\u044e", callback_data="back_to_main")])
+    buttons.append([InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -80,11 +104,11 @@ def get_lang_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="\U0001f1f7\U0001f1fa \u0420\u0443\u0441\u0441\u043a\u0438\u0439", callback_data="set_lang:ru")],
         [InlineKeyboardButton(text="\U0001f1ec\U0001f1e7 English", callback_data="set_lang:en")],
-        [InlineKeyboardButton(text="\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434", callback_data="back_to_main")],
+        [InlineKeyboardButton(text=BACK_SHORT_RU, callback_data="back_to_main")],
     ])
 
 
-def get_rating_keyboard() -> InlineKeyboardMarkup:
+def get_rating_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
             InlineKeyboardButton(text="1 \u2b50", callback_data="rate:1"),
@@ -95,5 +119,5 @@ def get_rating_keyboard() -> InlineKeyboardMarkup:
             InlineKeyboardButton(text="4 \u2b50", callback_data="rate:4"),
             InlineKeyboardButton(text="5 \u2b50", callback_data="rate:5"),
         ],
-        [InlineKeyboardButton(text="\u2b05\ufe0f \u041c\u0435\u043d\u044e", callback_data="back_to_main")],
+        [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
     ])

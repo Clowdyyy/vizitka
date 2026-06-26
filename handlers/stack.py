@@ -15,4 +15,4 @@ logger = logging.getLogger(__name__)
 async def show_stack(callback: CallbackQuery):
     await callback.answer()
     lang = get_lang(callback.from_user.id)
-    await safe_edit(callback.message, text=STACK[lang], caption=STACK[lang], reply_markup=get_back_keyboard())
+    await safe_edit(callback.message, text=STACK[lang], caption=STACK[lang], reply_markup=get_back_keyboard(lang))

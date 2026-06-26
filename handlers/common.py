@@ -66,7 +66,7 @@ async def cmd_stats(message: Message):
         await message.answer(NO_ACCESS_CMD[get_lang(message.from_user.id)])
         return
 
-    await _show_stats_page(message, page=1)
+    await _show_stats_page(message, page=1, lang=get_lang(message.from_user.id))
 
 
 @router.callback_query(F.data.startswith("stats_page:"))
@@ -81,10 +81,10 @@ async def stats_page_callback(callback: CallbackQuery):
     except (IndexError, ValueError):
         return
 
-    await _show_stats_page(callback.message, page)
+    await _show_stats_page(callback.message, page, lang=get_lang(callback.from_user.id))
 
 
-async def _show_stats_page(message, page: int):
+async def _show_stats_page(message, page: int, lang: str = "ru"):
     stats = load_stats()
     users = stats.get("users", {})
     total_users = len(users)
@@ -134,7 +134,7 @@ async def _show_stats_page(message, page: int):
         )
 
     text = "\n\n".join(lines)
-    keyboard = get_stats_keyboard(page, total_pages)
+    keyboard = get_stats_keyboard(page, total_pages, lang)
 
     from utils import safe_edit
     await safe_edit(message, text=text, reply_markup=keyboard)
@@ -144,7 +144,7 @@ async def _show_stats_page(message, page: int):
 async def show_about(callback: CallbackQuery):
     await callback.answer()
     lang = get_lang(callback.from_user.id)
-    await safe_edit(callback.message, text=ABOUT[lang], caption=ABOUT[lang], reply_markup=get_contact_keyboard())
+    await safe_edit(callback.message, text=ABOUT[lang], caption=ABOUT[lang], reply_markup=get_contact_keyboard(lang))
 
 
 @router.callback_query(F.data == "back_to_main")
@@ -176,7 +176,7 @@ async def write_to_author(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
     await state.set_state(ContactForm.waiting_message)
     lang = get_lang(callback.from_user.id)
-    await safe_edit(callback.message, text=CONTACT_PROMPT[lang], reply_markup=get_contact_form_keyboard())
+    await safe_edit(callback.message, text=CONTACT_PROMPT[lang], reply_markup=get_contact_form_keyboard(lang))
 
 
 @router.message(ContactForm.waiting_message)
