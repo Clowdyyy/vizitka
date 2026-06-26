@@ -36,9 +36,12 @@ async def cmd_start(message: Message, state):
     user = message.from_user
     logger.info("User %s (@%s | ID: %s) started the bot", user.full_name, user.username, user.id)
 
+    stats = load_stats()
+    is_new_user = str(user.id) not in stats.get("users", {})
+
     track_user(user.id, user.full_name, user.username)
 
-    if user.id != YOUR_TELEGRAM_ID:
+    if is_new_user and user.id != YOUR_TELEGRAM_ID:
         uname = f"@{user.username}" if user.username else "нет юзернейма"
         try:
             await message.bot.send_message(
