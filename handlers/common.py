@@ -8,7 +8,8 @@ from aiogram.fsm.state import State, StatesGroup
 from config import BANNER_FILE, YOUR_TELEGRAM_ID
 from data.translations import (
     WELCOME, ABOUT, HELP, CONTACT_PROMPT, CONTACT_SENT,
-    LANG_CHOICE, LANG_SELECTED,
+    LANG_CHOICE, LANG_SELECTED, NO_ACCESS_CMD, ADMIN_REPLY_SENT,
+    ADMIN_REPLY_FAIL, NO_USERNAME, UNKNOWN, NOT_RATED,
 )
 from keyboards.inline import (
     get_main_keyboard,
@@ -62,7 +63,7 @@ async def cmd_help(message: Message):
 @router.message(Command("stats"))
 async def cmd_stats(message: Message):
     if message.from_user.id != YOUR_TELEGRAM_ID:
-        await message.answer("\u26d4 \u0423 \u0432\u0430\u0441 \u043d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u0435.")
+        await message.answer(NO_ACCESS_CMD[get_lang(message.from_user.id)])
         return
 
     await _show_stats_page(message, page=1)
@@ -71,7 +72,7 @@ async def cmd_stats(message: Message):
 @router.callback_query(F.data.startswith("stats_page:"))
 async def stats_page_callback(callback: CallbackQuery):
     if callback.from_user.id != YOUR_TELEGRAM_ID:
-        await callback.answer("\u26d4 \u041d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u0430.", show_alert=True)
+        await callback.answer(NO_ACCESS_CMD[get_lang(callback.from_user.id)], show_alert=True)
         return
 
     await callback.answer()
@@ -117,13 +118,13 @@ async def _show_stats_page(message, page: int):
 
     lines = [header]
     for i, (uid, info) in enumerate(page_users):
-        name = info.get("name", "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e")
+        name = info.get("name", UNKNOWN[lang])
         uname = info.get("username")
         starts = info.get("starts", 0)
         last_seen = info.get("last_seen", "\u2014")
-        tag = f"@{uname}" if uname else "\u043d\u0435\u0442 \u044e\u0437\u0435\u0440\u043d\u0435\u0439\u043c\u0430"
+        tag = f"@{uname}" if uname else NO_USERNAME[lang]
         user_rating = rating_map.get(uid)
-        rating_str = f"\u2b50 {user_rating}/5" if user_rating else "\u043d\u0435 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043b"
+        rating_str = f"\u2b50 {user_rating}/5" if user_rating else NOT_RATED[lang]
 
         emoji = emojis[i] if i < len(emojis) else "\u25ab\ufe0f"
         lines.append(
@@ -143,7 +144,7 @@ async def _show_stats_page(message, page: int):
 async def show_about(callback: CallbackQuery):
     await callback.answer()
     lang = get_lang(callback.from_user.id)
-    await safe_edit(callback.message, caption=ABOUT[lang], reply_markup=get_contact_keyboard())
+    await safe_edit(callback.message, text=ABOUT[lang], caption=ABOUT[lang], reply_markup=get_contact_keyboard())
 
 
 @router.callback_query(F.data == "back_to_main")
@@ -184,7 +185,8 @@ async def handle_contact_message(message: Message, state: FSMContext):
 
     user = message.from_user
     name = user.full_name
-    uname = f"@{user.username}" if user.username else "\u043d\u0435\u0442 \u044e\u0437\u0435\u0440\u043d\u0435\u0439\u043c\u0430"
+    lang = get_lang(user.id)
+    uname = f"@{user.username}" if user.username else NO_USERNAME[lang]
 
     admin_text = (
         f"\U0001f4e9 <b>\u041d\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f!</b>\n\n"
@@ -217,10 +219,10 @@ async def handle_admin_reply(message: Message):
             text=f"\U0001f4e9 <b>\u041e\u0442\u0432\u0435\u0442 \u043e\u0442 \u0430\u0432\u0442\u043e\u0440\u0430:</b>\n\n{message.text}",
         )
         lang = get_lang(user_id)
-        await message.answer("\u2705 \u041e\u0442\u0432\u0435\u0442 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d.", reply_markup=get_main_keyboard(lang))
+        await message.answer(ADMIN_REPLY_SENT[lang], reply_markup=get_main_keyboard(lang))
     except Exception as e:
         logger.error("Failed to forward reply to user %s: %s", user_id, e)
-        await message.answer("\u274c \u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c.", reply_markup=get_main_keyboard())
+        await message.answer(ADMIN_REPLY_FAIL[lang], reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data == "noop")

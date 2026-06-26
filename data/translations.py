@@ -199,6 +199,36 @@ LANG_SELECTED = {
 }
 
 LANG_CHOICE = {
-    "ru": "🌐 Выбери язык:",
-    "en": "🌐 Choose language:",
+    "ru": "\U0001f310 \u0412\u044b\u0431\u0435\u0440\u0438 \u044f\u0437\u044b\u043a:",
+    "en": "\U0001f310 Choose language:",
+}
+
+NO_ACCESS_CMD = {
+    "ru": "\u26d4 \u0423 \u0432\u0430\u0441 \u043d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u0435.",
+    "en": "\u26d4 You don't have access to this command.",
+}
+
+ADMIN_REPLY_SENT = {
+    "ru": "\u2705 \u041e\u0442\u0432\u0435\u0442 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d.",
+    "en": "\u2705 Reply sent.",
+}
+
+ADMIN_REPLY_FAIL = {
+    "ru": "\u274c \u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c.",
+    "en": "\u274c Failed to send reply.",
+}
+
+NO_USERNAME = {
+    "ru": "\u043d\u0435\u0442 \u044e\u0437\u0435\u0440\u043d\u0435\u0439\u043c\u0430",
+    "en": "no username",
+}
+
+UNKNOWN = {
+    "ru": "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e",
+    "en": "Unknown",
+}
+
+NOT_RATED = {
+    "ru": "\u043d\u0435 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043b",
+    "en": "not rated",
 }
