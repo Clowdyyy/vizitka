@@ -38,6 +38,21 @@ async def cmd_start(message: Message, state):
 
     track_user(user.id, user.full_name, user.username)
 
+    if user.id != YOUR_TELEGRAM_ID:
+        uname = f"@{user.username}" if user.username else "нет юзернейма"
+        try:
+            await message.bot.send_message(
+                chat_id=YOUR_TELEGRAM_ID,
+                text=(
+                    f"👤 <b>Новый запуск!</b>\n\n"
+                    f"Имя: <b>{user.full_name}</b>\n"
+                    f"Юзер: {uname}\n"
+                    f"ID: <code>{user.id}</code>"
+                ),
+            )
+        except Exception as e:
+            logger.warning("Failed to notify admin: %s", e)
+
     await state.clear()
 
     if await is_user_rate_limited(user.id):
