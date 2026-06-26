@@ -3,7 +3,7 @@ from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
 
-from data.projects import PROJECTS, LINE
+from data.projects import PROJECTS
 from keyboards.inline import get_carousel_keyboard
 from utils import safe_edit
 
@@ -16,13 +16,11 @@ class ProjectStates(StatesGroup):
 
 
 def format_project(project: dict) -> str:
-    stack_tags = " • ".join(f"<code>{s}</code>" for s in project["stack"])
+    stack_tags = " ".join(f"<code>{s}</code>" for s in project["stack"])
     return (
-        f"{LINE}\n"
-        f"   ✦ {project['name']}\n"
-        f"{LINE}\n\n"
+        f"{project['emoji']} <b>{project['name']}</b>\n\n"
         f"{project['desc']}\n\n"
-        f"▸ Стек: {stack_tags}"
+        f"⚙️ <b>Стек:</b> {stack_tags}"
     )
 
 

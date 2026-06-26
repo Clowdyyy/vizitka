@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 
-from data.projects import RATING_TEXT, STATS_TEXT, LINE
+from data.projects import RATING_TEXT, STATS_TEXT
 from keyboards.inline import get_rating_keyboard, get_main_keyboard
 from config import YOUR_TELEGRAM_ID
 from utils import safe_edit
@@ -59,11 +59,11 @@ async def show_rating(callback: CallbackQuery):
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
             user_rating = r["rating"]
-            text = f"✦ Уже оценено.\n\nВаша оценка: {'★' * user_rating} ({user_rating}/5)"
+            text = f"✅ <b>Вы уже оценили бота!</b>\n\nВаша оценка: {'⭐' * user_rating} ({user_rating}/5)"
             await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
             return
 
-    text = f"{LINE}\n   ✦ ОЦЕНИТЕ БОТА\n{LINE}\n\nКак вам портфолио?"
+    text = "⭐ <b>Оцените бота!</b>\n\nКак вам портфолио?"
     await safe_edit(callback.message, text=text, caption=text, reply_markup=get_rating_keyboard())
 
 
@@ -102,7 +102,7 @@ async def handle_rating(callback: CallbackQuery):
 
     for r in stats["ratings"]:
         if str(r.get("user_id")) == uid:
-            text = "✦ Уже голосовали.\n\nПовторное голосование невозможно."
+            text = "⛔ <b>Вы уже оценили бота!</b>\n\nПовторное голосование невозможно."
             await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
             return
 
@@ -117,6 +117,6 @@ async def handle_rating(callback: CallbackQuery):
 
     save_stats(stats)
 
-    stars = "★" * rating
+    stars = "⭐" * rating
     text = RATING_TEXT.format(stars=stars)
     await safe_edit(callback.message, text=text, caption=text, reply_markup=get_main_keyboard())
