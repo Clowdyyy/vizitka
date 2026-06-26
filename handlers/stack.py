@@ -5,7 +5,7 @@ from aiogram.types import CallbackQuery
 from data.translations import STACK
 from keyboards.inline import get_back_keyboard
 from utils import safe_edit
-from handlers.common import get_lang
+from handlers.rating import get_lang
 
 router = Router()
 logger = logging.getLogger(__name__)

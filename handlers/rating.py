@@ -9,12 +9,25 @@ from data.translations import RATING, RATING_ASK, RATING_ALREADY, RATING_DENIED
 from keyboards.inline import get_rating_keyboard, get_main_keyboard
 from config import YOUR_TELEGRAM_ID
 from utils import safe_edit
-from handlers.common import get_lang
 
 router = Router()
 logger = logging.getLogger(__name__)
 
 STATS_FILE = os.path.join(os.path.dirname(__file__), "..", "stats.json")
+
+
+def get_lang(user_id: int) -> str:
+    stats = load_stats()
+    return stats.get("users", {}).get(str(user_id), {}).get("lang", "ru")
+
+
+def set_lang(user_id: int, lang: str):
+    stats = load_stats()
+    uid = str(user_id)
+    if uid not in stats["users"]:
+        stats["users"][uid] = {"name": "", "username": None, "first_seen": "", "last_seen": "", "starts": 0}
+    stats["users"][uid]["lang"] = lang
+    save_stats(stats)
 
 
 def load_stats() -> dict:

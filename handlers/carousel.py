@@ -7,7 +7,7 @@ from data.translations import PROJECTS
 from data.projects import PROJECTS as OldProjects
 from keyboards.inline import get_carousel_keyboard
 from utils import safe_edit
-from handlers.common import get_lang
+from handlers.rating import get_lang
 
 router = Router()
 logger = logging.getLogger(__name__)

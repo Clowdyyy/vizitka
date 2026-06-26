@@ -1,5 +1,4 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from data.projects import PROJECTS
 
 
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
@@ -26,6 +25,7 @@ def get_back_keyboard() -> InlineKeyboardMarkup:
 
 
 def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
+    from data.translations import PROJECTS
     total = len(PROJECTS["ru"])
     prev_idx = (index - 1) % total
     next_idx = (index + 1) % total

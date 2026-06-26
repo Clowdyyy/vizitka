@@ -18,26 +18,12 @@ from keyboards.inline import (
     get_lang_keyboard,
 )
 from utils import simulate_typing, is_user_rate_limited, safe_edit
-from handlers.rating import track_user, load_stats, save_stats
+from handlers.rating import track_user, load_stats, save_stats, get_lang, set_lang
 
 router = Router()
 logger = logging.getLogger(__name__)
 
 _reply_map: dict[int, int] = {}
-
-
-def get_lang(user_id: int) -> str:
-    stats = load_stats()
-    return stats.get("users", {}).get(str(user_id), {}).get("lang", "ru")
-
-
-def set_lang(user_id: int, lang: str):
-    stats = load_stats()
-    uid = str(user_id)
-    if uid not in stats["users"]:
-        stats["users"][uid] = {"name": "", "username": None, "first_seen": "", "last_seen": "", "starts": 0}
-    stats["users"][uid]["lang"] = lang
-    save_stats(stats)
 
 
 class ContactForm(StatesGroup):
@@ -139,7 +125,7 @@ async def _show_stats_page(message, page: int):
         user_rating = rating_map.get(uid)
         rating_str = f"\u2b50 {user_rating}/5" if user_rating else "\u043d\u0435 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043b"
 
-        emoji = emojis[i] if i < len(emojis) else "\u2ab\ufe0f"
+        emoji = emojis[i] if i < len(emojis) else "\u25ab\ufe0f"
         lines.append(
             f"{emoji} <b>{name}</b> ({tag})\n"
             f"   \U0001f680 {starts} \u0437\u0430\u043f\u0443\u0441\u043a\u043e\u0432 | \U0001f4c5 {last_seen}\n"
