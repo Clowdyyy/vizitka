@@ -97,7 +97,7 @@ async def _show_stats_page(message, page: int, lang: str = "ru"):
     for r in ratings:
         rating_map[str(r["user_id"])] = r["rating"]
 
-    per_page = 10
+    per_page = 5
     total_pages = max(1, (total_users + per_page - 1) // per_page)
     page = max(1, min(page, total_pages))
 
