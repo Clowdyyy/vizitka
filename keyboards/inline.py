@@ -8,8 +8,12 @@ def get_main_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="✨ Мои проекты", callback_data="start_carousel")],
         [InlineKeyboardButton(text="🛠 Мой стек технологий", callback_data="show_stack")],
         [InlineKeyboardButton(text="👤 Обо мне", callback_data="show_about")],
-        [InlineKeyboardButton(text="✉️ Написать в личку", url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
+        [InlineKeyboardButton(text="✉️ Написать мне", callback_data="write_to_author")],
         [InlineKeyboardButton(text="📊 Статистика", callback_data="show_stats")],
+        [
+            InlineKeyboardButton(text="🔗 GitHub", url="https://github.com/Clowdyyy"),
+            InlineKeyboardButton(text="🎵 TikTok", url="https://www.tiktok.com/@clowdyxzz"),
+        ],
     ])
 
 
@@ -51,6 +55,12 @@ def get_contact_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="💬 Написать в личку", url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
         [InlineKeyboardButton(text="⭐ Оценить бота", callback_data="show_rating")],
         [InlineKeyboardButton(text="⬅️ Назад в меню", callback_data="back_to_main")],
+    ])
+
+
+def get_contact_form_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="⬅️ Отмена", callback_data="back_to_main")]
     ])
 
 

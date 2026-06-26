@@ -2,19 +2,26 @@ import logging
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart, Command
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
 
 from config import BANNER_FILE, YOUR_TELEGRAM_ID
-from data.projects import WELCOME_TEXT, ABOUT_TEXT, HELP_TEXT
+from data.projects import WELCOME_TEXT, ABOUT_TEXT, HELP_TEXT, CONTACT_PROMPT, CONTACT_SENT
 from keyboards.inline import (
     get_main_keyboard,
     get_contact_keyboard,
     get_stats_keyboard,
+    get_contact_form_keyboard,
 )
 from utils import simulate_typing, is_user_rate_limited, safe_edit
 from handlers.rating import track_user, load_stats
 
 router = Router()
 logger = logging.getLogger(__name__)
+
+
+class ContactForm(StatesGroup):
+    waiting_message = State()
 
 
 @router.message(CommandStart())
@@ -135,6 +142,36 @@ async def back_to_main(callback: CallbackQuery, state):
     await callback.answer()
     await state.clear()
     await safe_edit(callback.message, text=WELCOME_TEXT, caption=WELCOME_TEXT, reply_markup=get_main_keyboard())
+
+
+@router.callback_query(F.data == "write_to_author")
+async def write_to_author(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await state.set_state(ContactForm.waiting_message)
+    await safe_edit(callback.message, text=CONTACT_PROMPT, reply_markup=get_contact_form_keyboard())
+
+
+@router.message(ContactForm.waiting_message)
+async def handle_contact_message(message: Message, state: FSMContext):
+    await state.clear()
+
+    user = message.from_user
+    name = user.full_name
+    uname = f"@{user.username}" if user.username else "нет юзернейма"
+
+    admin_text = (
+        f"📩 <b>Новое сообщение от пользователя!</b>\n\n"
+        f"👤 <b>{name}</b> ({uname})\n"
+        f"🆔 ID: <code>{user.id}</code>\n\n"
+        f"💬 {message.text}"
+    )
+
+    try:
+        await message.bot.send_message(chat_id=YOUR_TELEGRAM_ID, text=admin_text)
+    except Exception as e:
+        logger.error("Failed to send contact message to admin: %s", e)
+
+    await message.answer(CONTACT_SENT, reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data == "noop")
