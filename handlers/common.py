@@ -19,6 +19,8 @@ from handlers.rating import track_user, load_stats
 router = Router()
 logger = logging.getLogger(__name__)
 
+_reply_map: dict[int, int] = {}
+
 
 class ContactForm(StatesGroup):
     waiting_message = State()
@@ -163,15 +165,35 @@ async def handle_contact_message(message: Message, state: FSMContext):
         f"📩 <b>Новое сообщение от пользователя!</b>\n\n"
         f"👤 <b>{name}</b> ({uname})\n"
         f"🆔 ID: <code>{user.id}</code>\n\n"
-        f"💬 {message.text}"
+        f"💬 {message.text}\n\n"
+        f"<i>Ответьте на это сообщение, чтобы переслать ответ пользователю.</i>"
     )
 
     try:
-        await message.bot.send_message(chat_id=YOUR_TELEGRAM_ID, text=admin_text)
+        sent = await message.bot.send_message(chat_id=YOUR_TELEGRAM_ID, text=admin_text)
+        _reply_map[sent.message_id] = user.id
     except Exception as e:
         logger.error("Failed to send contact message to admin: %s", e)
 
     await message.answer(CONTACT_SENT, reply_markup=get_main_keyboard())
+
+
+@router.message(F.chat.id == YOUR_TELEGRAM_ID, F.reply_to_message)
+async def handle_admin_reply(message: Message):
+    reply_to = message.reply_to_message
+    user_id = _reply_map.get(reply_to.message_id)
+    if not user_id:
+        return
+
+    try:
+        await message.bot.send_message(
+            chat_id=user_id,
+            text=f"📩 <b>Ответ от автора:</b>\n\n{message.text}",
+        )
+        await message.answer("✅ Ответ отправлен пользователю.")
+    except Exception as e:
+        logger.error("Failed to forward reply to user %s: %s", user_id, e)
+        await message.answer("❌ Не удалось отправить ответ. Пользователь может быть недоступен.")
 
 
 @router.callback_query(F.data == "noop")
