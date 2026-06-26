@@ -56,7 +56,7 @@ async def cmd_help(message: Message):
 @router.message(Command("stats"))
 async def cmd_stats(message: Message):
     if message.from_user.id != YOUR_TELEGRAM_ID:
-        await message.answer("⛔ У вас нет доступа к этой команде.")
+        await message.answer("Нет доступа.")
         return
 
     await _show_stats_page(message, page=1)
@@ -65,7 +65,7 @@ async def cmd_stats(message: Message):
 @router.callback_query(F.data.startswith("stats_page:"))
 async def stats_page_callback(callback: CallbackQuery):
     if callback.from_user.id != YOUR_TELEGRAM_ID:
-        await callback.answer("⛔ Нет доступа.", show_alert=True)
+        await callback.answer("Нет доступа.", show_alert=True)
         return
 
     await callback.answer()
@@ -162,11 +162,11 @@ async def handle_contact_message(message: Message, state: FSMContext):
     uname = f"@{user.username}" if user.username else "нет юзернейма"
 
     admin_text = (
-        f"📩 <b>Новое сообщение от пользователя!</b>\n\n"
-        f"👤 <b>{name}</b> ({uname})\n"
-        f"🆔 ID: <code>{user.id}</code>\n\n"
-        f"💬 {message.text}\n\n"
-        f"<i>Ответьте на это сообщение, чтобы переслать ответ пользователю.</i>"
+        f"Новое сообщение\n\n"
+        f"<b>{name}</b> ({uname})\n"
+        f"ID: <code>{user.id}</code>\n\n"
+        f"{message.text}\n\n"
+        f"<i>Ответьте на это сообщение, чтобы переслать ответ.</i>"
     )
 
     try:
@@ -188,12 +188,12 @@ async def handle_admin_reply(message: Message):
     try:
         await message.bot.send_message(
             chat_id=user_id,
-            text=f"📩 <b>Ответ от автора:</b>\n\n{message.text}",
+            text=f"Ответ от автора:\n\n{message.text}",
         )
-        await message.answer("✅ Ответ отправлен пользователю.", reply_markup=get_main_keyboard())
+        await message.answer("Ответ отправлен.", reply_markup=get_main_keyboard())
     except Exception as e:
         logger.error("Failed to forward reply to user %s: %s", user_id, e)
-        await message.answer("❌ Не удалось отправить ответ.", reply_markup=get_main_keyboard())
+        await message.answer("Не удалось отправить ответ.", reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data == "noop")
