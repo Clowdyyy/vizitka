@@ -36,6 +36,9 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="\U0001f4ca \u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430" if lang == "ru" else "\U0001f4ca Stats", callback_data="show_stats")],
         [InlineKeyboardButton(text=lang_btn, callback_data="change_lang")],
         [
+            InlineKeyboardButton(text="\U0001f310 \u0421\u0430\u0439\u0442" if lang == "ru" else "\U0001f310 Website", url="https://clowdy.is-a.dev/"),
+        ],
+        [
             InlineKeyboardButton(text="GitHub", url="https://github.com/Clowdyyy"),
             InlineKeyboardButton(text="TikTok", url="https://www.tiktok.com/@clowdyxzz"),
         ],
