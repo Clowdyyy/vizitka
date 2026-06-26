@@ -190,10 +190,10 @@ async def handle_admin_reply(message: Message):
             chat_id=user_id,
             text=f"📩 <b>Ответ от автора:</b>\n\n{message.text}",
         )
-        await message.answer("✅ Ответ отправлен пользователю.")
+        await message.answer("✅ Ответ отправлен пользователю.", reply_markup=get_main_keyboard())
     except Exception as e:
         logger.error("Failed to forward reply to user %s: %s", user_id, e)
-        await message.answer("❌ Не удалось отправить ответ. Пользователь может быть недоступен.")
+        await message.answer("❌ Не удалось отправить ответ.", reply_markup=get_main_keyboard())
 
 
 @router.callback_query(F.data == "noop")
