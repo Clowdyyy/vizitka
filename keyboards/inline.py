@@ -71,7 +71,7 @@ def get_back_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     ])
 
 
-def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
+def get_carousel_keyboard(index: int, lang: str = "ru") -> InlineKeyboardMarkup:
     from data.translations import PROJECTS
     total = len(PROJECTS["ru"])
     prev_idx = (index - 1) % total
