@@ -1,64 +1,57 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-BACK_RU = "⬅️ Назад в меню"
-BACK_EN = "⬅️ Back to menu"
-BACK_SHORT_RU = "⬅️ Назад"
-BACK_SHORT_EN = "⬅️ Back"
-MENU_RU = "👑 Меню"
-MENU_EN = "👑 Menu"
-CANCEL_RU = "⬅️ Отмена"
-CANCEL_EN = "⬅️ Cancel"
-DM_RU = "💬 В личку"
-DM_EN = "💬 DM"
-RATE_RU = "⭐ Оценить"
-RATE_EN = "⭐ Rate"
-
-
 def _back(lang):
-    return BACK_RU if lang == "ru" else BACK_EN
+    return "⬅️ Назад в меню" if lang == "ru" else "⬅️ Back to menu"
 
 def _back_short(lang):
-    return BACK_SHORT_RU if lang == "ru" else BACK_SHORT_EN
-
-def _menu(lang):
-    return MENU_RU if lang == "ru" else MENU_EN
+    return "⬅️ Назад" if lang == "ru" else "⬅️ Back"
 
 
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
-    lang_btn = "🌐 Язык" if lang == "ru" else "🌐 Language"
+    lang_text = "🌐 Язык" if lang == "ru" else "🌐 Language"
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="✨ Мои проекты" if lang == "ru" else "✨ Projects",
             callback_data="start_carousel",
-            button_color="purple",
+            icon_custom_emoji_id="5325547803936572038",
+            button_color="primary",
         )],
         [InlineKeyboardButton(
             text="🛠️ Стек" if lang == "ru" else "🛠️ Stack",
             callback_data="show_stack",
-            button_color="orange",
+            icon_custom_emoji_id="5988023995125993550",
+            button_color="secondary",
         )],
         [InlineKeyboardButton(
             text="👤 Обо мне" if lang == "ru" else "👤 About",
             callback_data="show_about",
+            icon_custom_emoji_id="5258011929993026890",
         )],
         [InlineKeyboardButton(
             text="✉️ Написать" if lang == "ru" else "✉️ Write",
             callback_data="write_to_author",
-            button_color="green",
+            icon_custom_emoji_id="5472239203590888751",
+            button_color="primary",
         )],
         [InlineKeyboardButton(
             text="📊 Статистика" if lang == "ru" else "📊 Stats",
             callback_data="show_stats",
-            button_color="blue",
+            icon_custom_emoji_id="5231200819986047254",
+            button_color="secondary",
         )],
-        [InlineKeyboardButton(text=lang_btn, callback_data="change_lang")],
+        [InlineKeyboardButton(
+            text=lang_text,
+            callback_data="change_lang",
+            icon_custom_emoji_id="5256211458227715194",
+        )],
         [
             InlineKeyboardButton(
                 text="🌐 Сайт" if lang == "ru" else "🌐 Website",
                 url="https://clowdy.is-a.dev/",
-                button_color="blue",
+                icon_custom_emoji_id="5256211458227715194",
+                button_color="primary",
             ),
         ],
         [
@@ -70,7 +63,11 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
 
 def get_back_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=_back(lang), callback_data="back_to_main")]
+        [InlineKeyboardButton(
+            text=_back(lang),
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909",
+        )]
     ])
 
 
@@ -82,14 +79,18 @@ def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
 
     buttons = [
         [
-            InlineKeyboardButton(text="◀️", callback_data=f"carousel_goto:{prev_idx}"),
+            InlineKeyboardButton(text="◀️", callback_data=f"carousel_goto:{prev_idx}", icon_custom_emoji_id="5256247952564825322"),
             InlineKeyboardButton(text=f"{index + 1} / {total}", callback_data="noop"),
-            InlineKeyboardButton(text="▶️", callback_data=f"carousel_goto:{next_idx}"),
+            InlineKeyboardButton(text="▶️", callback_data=f"carousel_goto:{next_idx}", icon_custom_emoji_id="5255835489675519149"),
         ]
     ]
 
     buttons.append([
-        InlineKeyboardButton(text=MENU_RU, callback_data="back_to_main")
+        InlineKeyboardButton(
+            text="👑 Меню" if lang == "ru" else "👑 Menu",
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5433758796289685818",
+        )
     ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
@@ -98,15 +99,32 @@ def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
 def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=DM_RU if lang == "ru" else DM_EN, url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
-        [InlineKeyboardButton(text=RATE_RU if lang == "ru" else RATE_EN, callback_data="show_rating", button_color="yellow")],
-        [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
+        [InlineKeyboardButton(
+            text="💬 В личку" if lang == "ru" else "💬 DM",
+            url=f"tg://user?id={YOUR_TELEGRAM_ID}",
+            icon_custom_emoji_id="5260535596941582167",
+        )],
+        [InlineKeyboardButton(
+            text="⭐ Оценить" if lang == "ru" else "⭐ Rate",
+            callback_data="show_rating",
+            icon_custom_emoji_id="5258185631355378853",
+            button_color="primary",
+        )],
+        [InlineKeyboardButton(
+            text=_back_short(lang),
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909",
+        )],
     ])
 
 
 def get_contact_form_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=CANCEL_RU if lang == "ru" else CANCEL_EN, callback_data="back_to_main")]
+        [InlineKeyboardButton(
+            text="⬅️ Отмена" if lang == "ru" else "⬅️ Cancel",
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909",
+        )]
     ])
 
 
@@ -115,35 +133,55 @@ def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineK
 
     nav_row = []
     if page > 1:
-        nav_row.append(InlineKeyboardButton(text="◀️", callback_data=f"stats_page:{page - 1}"))
+        nav_row.append(InlineKeyboardButton(text="◀️", callback_data=f"stats_page:{page - 1}", icon_custom_emoji_id="5256247952564825322"))
     nav_row.append(InlineKeyboardButton(text=f"{page} / {total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav_row.append(InlineKeyboardButton(text="▶️", callback_data=f"stats_page:{page + 1}"))
+        nav_row.append(InlineKeyboardButton(text="▶️", callback_data=f"stats_page:{page + 1}", icon_custom_emoji_id="5255835489675519149"))
     buttons.append(nav_row)
 
-    buttons.append([InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")])
+    buttons.append([InlineKeyboardButton(
+        text=_back_short(lang),
+        callback_data="back_to_main",
+        icon_custom_emoji_id="5258236805890710909",
+    )])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
 def get_lang_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🇷🇺 Русский", callback_data="set_lang:ru")],
-        [InlineKeyboardButton(text="🇬🇧 English", callback_data="set_lang:en")],
-        [InlineKeyboardButton(text=BACK_SHORT_RU, callback_data="back_to_main")],
+        [InlineKeyboardButton(
+            text="🇷🇺 Русский",
+            callback_data="set_lang:ru",
+            icon_custom_emoji_id="5449408995691341691",
+        )],
+        [InlineKeyboardButton(
+            text="🇬🇧 English",
+            callback_data="set_lang:en",
+            icon_custom_emoji_id="5202196682497859879",
+        )],
+        [InlineKeyboardButton(
+            text="⬅️ Назад",
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909",
+        )],
     ])
 
 
 def get_rating_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="1 ⭐", callback_data="rate:1"),
-            InlineKeyboardButton(text="2 ⭐", callback_data="rate:2"),
-            InlineKeyboardButton(text="3 ⭐", callback_data="rate:3"),
+            InlineKeyboardButton(text="1 ⭐", callback_data="rate:1", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="2 ⭐", callback_data="rate:2", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="3 ⭐", callback_data="rate:3", icon_custom_emoji_id="5258185631355378853"),
         ],
         [
-            InlineKeyboardButton(text="4 ⭐", callback_data="rate:4"),
-            InlineKeyboardButton(text="5 ⭐", callback_data="rate:5"),
+            InlineKeyboardButton(text="4 ⭐", callback_data="rate:4", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="5 ⭐", callback_data="rate:5", icon_custom_emoji_id="5258185631355378853"),
         ],
-        [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
+        [InlineKeyboardButton(
+            text=_back_short(lang),
+            callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909",
+        )],
     ])
