@@ -147,7 +147,7 @@ async def _show_stats_page(message, page: int, lang: str = "ru"):
         emoji = emojis[i] if i < len(emojis) else "\u25ab\ufe0f"
         lines.append(
             f"{emoji} <b>{name}</b> ({tag})\n"
-            f'   <tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji> {starts} запусков | 📅 {last_seen}\n'
+            f'   <tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji> {starts} запусков | <tg-emoji emoji-id="5967412305338568701">📅</tg-emoji> {last_seen}\n'
             f"   {rating_str}"
         )
 
