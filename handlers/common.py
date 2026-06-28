@@ -125,11 +125,11 @@ async def _show_stats_page(message, page: int, lang: str = "ru"):
     page_users = user_items[start_idx:end_idx]
 
     header = (
-        "\U0001f4ca <b>\u041f\u0430\u043d\u0435\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f</b>\n\n"
-        f"\U0001f465 \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439: <b>{total_users}</b> | "
-        f"\U0001f440 \u0417\u0430\u043f\u0443\u0441\u043a\u043e\u0432: <b>{total_views}</b> | "
-        f"\u2b50 \u0421\u0440\u0435\u0434\u043d\u044f\u044f: <b>{avg_rating:.1f}</b>\n\n"
-        f"<b>\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 (\u0441\u0442\u0440. {page}/{total_pages}):</b>\n"
+        '<tg-emoji emoji-id="5231200819986047254">📊</tg-emoji> <b>Панель управления</b>\n\n'
+        f'<tg-emoji emoji-id="5258513401784573443">👥</tg-emoji> Пользователей: <b>{total_users}</b> | '
+        f'<tg-emoji emoji-id="5280881372418816002">👀</tg-emoji> Запусков: <b>{total_views}</b> | '
+        f'<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> Средняя: <b>{avg_rating:.1f}</b>\n\n'
+        f"<b>Пользователи (стр. {page}/{total_pages}):</b>\n"
     )
 
     emojis = ["1\ufe0f\u20e3", "2\ufe0f\u20e3", "3\ufe0f\u20e3", "4\ufe0f\u20e3", "5\ufe0f\u20e3", "6\ufe0f\u20e3", "7\ufe0f\u20e3", "8\ufe0f\u20e3", "9\ufe0f\u20e3", "\U0001f51f"]
@@ -142,12 +142,12 @@ async def _show_stats_page(message, page: int, lang: str = "ru"):
         last_seen = info.get("last_seen", "\u2014")
         tag = f"@{uname}" if uname else NO_USERNAME[lang]
         user_rating = rating_map.get(uid)
-        rating_str = f"\u2b50 {user_rating}/5" if user_rating else NOT_RATED[lang]
+        rating_str = f'<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> {user_rating}/5' if user_rating else NOT_RATED[lang]
 
         emoji = emojis[i] if i < len(emojis) else "\u25ab\ufe0f"
         lines.append(
             f"{emoji} <b>{name}</b> ({tag})\n"
-            f"   \U0001f680 {starts} \u0437\u0430\u043f\u0443\u0441\u043a\u043e\u0432 | \U0001f4c5 {last_seen}\n"
+            f'   <tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji> {starts} запусков | 📅 {last_seen}\n'
             f"   {rating_str}"
         )
 
