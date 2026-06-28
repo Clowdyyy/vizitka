@@ -10,7 +10,7 @@ def _back_short(lang):
 
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
-    lang_text = "🌐 Язык" if lang == "ru" else "🌐 Language"
+    lang_text = "Язык" if lang == "ru" else "Language"
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="Мои проекты" if lang == "ru" else "Projects",
