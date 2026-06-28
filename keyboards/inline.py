@@ -1,18 +1,18 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-BACK_RU = "\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
-BACK_EN = "\u2b05\ufe0f Back to menu"
-BACK_SHORT_RU = "\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434"
-BACK_SHORT_EN = "\u2b05\ufe0f Back"
-MENU_RU = "\U0001f451 \u041c\u0435\u043d\u044e"
-MENU_EN = "\U0001f451 Menu"
-CANCEL_RU = "\u2b05\ufe0f \u041e\u0442\u043c\u0435\u043d\u0430"
-CANCEL_EN = "\u2b05\ufe0f Cancel"
-DM_RU = "\U0001f4ac \u0412 \u043b\u0438\u0447\u043a\u0443"
-DM_EN = "\U0001f4ac DM"
-RATE_RU = "\u2b50 \u041e\u0446\u0435\u043d\u0438\u0442\u044c"
-RATE_EN = "\u2b50 Rate"
+BACK_RU = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Назад в меню'
+BACK_EN = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Back to menu'
+BACK_SHORT_RU = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Назад'
+BACK_SHORT_EN = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Back'
+MENU_RU = '<tg-emoji emoji-id="5433758796289685818">👑</tg-emoji> Меню'
+MENU_EN = '<tg-emoji emoji-id="5433758796289685818">👑</tg-emoji> Menu'
+CANCEL_RU = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Отмена'
+CANCEL_EN = '<tg-emoji emoji-id="5258236805890710909">⬅️</tg-emoji> Cancel'
+DM_RU = '<tg-emoji emoji-id="5260535596941582167">💬</tg-emoji> В личку'
+DM_EN = '<tg-emoji emoji-id="5260535596941582167">💬</tg-emoji> DM'
+RATE_RU = '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> Оценить'
+RATE_EN = '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> Rate'
 
 
 def _back(lang):
@@ -27,16 +27,39 @@ def _menu(lang):
 
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
-    lang_btn = "\U0001f310 \u042f\u0437\u044b\u043a" if lang == "ru" else "\U0001f310 Language"
+    lang_btn = '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Язык' if lang == "ru" else '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Language'
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="\u2728 \u041c\u043e\u0438 \u043f\u0440\u043e\u0435\u043a\u0442\u044b" if lang == "ru" else "\u2728 Projects", callback_data="start_carousel")],
-        [InlineKeyboardButton(text="\U0001f6e0\ufe0f \u0421\u0442\u0435\u043a" if lang == "ru" else "\U0001f6e0\ufe0f Stack", callback_data="show_stack")],
-        [InlineKeyboardButton(text="\U0001f464 \u041e\u0431\u043e \u043c\u043d\u0435" if lang == "ru" else "\U0001f464 About", callback_data="show_about")],
-        [InlineKeyboardButton(text="\u2709\ufe0f \u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c" if lang == "ru" else "\u2709\ufe0f Write", callback_data="write_to_author")],
-        [InlineKeyboardButton(text="\U0001f4ca \u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430" if lang == "ru" else "\U0001f4ca Stats", callback_data="show_stats")],
+        [InlineKeyboardButton(
+            text='<tg-emoji emoji-id="5325547803936572038">✨</tg-emoji> Мои проекты' if lang == "ru" else '<tg-emoji emoji-id="5325547803936572038">✨</tg-emoji> Projects',
+            callback_data="start_carousel",
+            button_color="purple",
+        )],
+        [InlineKeyboardButton(
+            text='<tg-emoji emoji-id="5988023995125993550">🛠️</tg-emoji> Стек' if lang == "ru" else '<tg-emoji emoji-id="5988023995125993550">🛠️</tg-emoji> Stack',
+            callback_data="show_stack",
+            button_color="orange",
+        )],
+        [InlineKeyboardButton(
+            text='<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> Обо мне' if lang == "ru" else '<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> About',
+            callback_data="show_about",
+        )],
+        [InlineKeyboardButton(
+            text='<tg-emoji emoji-id="5472239203590888751">✉️</tg-emoji> Написать' if lang == "ru" else '<tg-emoji emoji-id="5472239203590888751">✉️</tg-emoji> Write',
+            callback_data="write_to_author",
+            button_color="green",
+        )],
+        [InlineKeyboardButton(
+            text='<tg-emoji emoji-id="5231200819986047254">📊</tg-emoji> Статистика' if lang == "ru" else '<tg-emoji emoji-id="5231200819986047254">📊</tg-emoji> Stats',
+            callback_data="show_stats",
+            button_color="blue",
+        )],
         [InlineKeyboardButton(text=lang_btn, callback_data="change_lang")],
         [
-            InlineKeyboardButton(text="\U0001f310 \u0421\u0430\u0439\u0442" if lang == "ru" else "\U0001f310 Website", url="https://clowdy.is-a.dev/"),
+            InlineKeyboardButton(
+                text='<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Сайт' if lang == "ru" else '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Website',
+                url="https://clowdy.is-a.dev/",
+                button_color="blue",
+            ),
         ],
         [
             InlineKeyboardButton(text="GitHub", url="https://github.com/Clowdyyy"),
@@ -59,9 +82,9 @@ def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
 
     buttons = [
         [
-            InlineKeyboardButton(text="\u25c0\ufe0f", callback_data=f"carousel_goto:{prev_idx}"),
+            InlineKeyboardButton(text='<tg-emoji emoji-id="5256247952564825322">◀️</tg-emoji>', callback_data=f"carousel_goto:{prev_idx}"),
             InlineKeyboardButton(text=f"{index + 1} / {total}", callback_data="noop"),
-            InlineKeyboardButton(text="\u25b6\ufe0f", callback_data=f"carousel_goto:{next_idx}"),
+            InlineKeyboardButton(text='<tg-emoji emoji-id="5255835489675519149">▶️</tg-emoji>', callback_data=f"carousel_goto:{next_idx}"),
         ]
     ]
 
@@ -76,7 +99,7 @@ def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=DM_RU if lang == "ru" else DM_EN, url=f"tg://user?id={YOUR_TELEGRAM_ID}")],
-        [InlineKeyboardButton(text=RATE_RU if lang == "ru" else RATE_EN, callback_data="show_rating")],
+        [InlineKeyboardButton(text=RATE_RU if lang == "ru" else RATE_EN, callback_data="show_rating", button_color="yellow")],
         [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
     ])
 
@@ -92,10 +115,10 @@ def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineK
 
     nav_row = []
     if page > 1:
-        nav_row.append(InlineKeyboardButton(text="\u25c0\ufe0f", callback_data=f"stats_page:{page - 1}"))
+        nav_row.append(InlineKeyboardButton(text='<tg-emoji emoji-id="5256247952564825322">◀️</tg-emoji>', callback_data=f"stats_page:{page - 1}"))
     nav_row.append(InlineKeyboardButton(text=f"{page} / {total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav_row.append(InlineKeyboardButton(text="\u25b6\ufe0f", callback_data=f"stats_page:{page + 1}"))
+        nav_row.append(InlineKeyboardButton(text='<tg-emoji emoji-id="5255835489675519149">▶️</tg-emoji>', callback_data=f"stats_page:{page + 1}"))
     buttons.append(nav_row)
 
     buttons.append([InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")])
@@ -105,8 +128,8 @@ def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineK
 
 def get_lang_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="\U0001f1f7\U0001f1fa \u0420\u0443\u0441\u0441\u043a\u0438\u0439", callback_data="set_lang:ru")],
-        [InlineKeyboardButton(text="\U0001f1ec\U0001f1e7 English", callback_data="set_lang:en")],
+        [InlineKeyboardButton(text='<tg-emoji emoji-id="5449408995691341691">🇷🇺</tg-emoji> Русский', callback_data="set_lang:ru")],
+        [InlineKeyboardButton(text='<tg-emoji emoji-id="5202196682497859879">🇬🇧</tg-emoji> English', callback_data="set_lang:en")],
         [InlineKeyboardButton(text=BACK_SHORT_RU, callback_data="back_to_main")],
     ])
 
@@ -114,13 +137,13 @@ def get_lang_keyboard() -> InlineKeyboardMarkup:
 def get_rating_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="1 \u2b50", callback_data="rate:1"),
-            InlineKeyboardButton(text="2 \u2b50", callback_data="rate:2"),
-            InlineKeyboardButton(text="3 \u2b50", callback_data="rate:3"),
+            InlineKeyboardButton(text="1 <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>", callback_data="rate:1"),
+            InlineKeyboardButton(text="2 <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>", callback_data="rate:2"),
+            InlineKeyboardButton(text="3 <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>", callback_data="rate:3"),
         ],
         [
-            InlineKeyboardButton(text="4 \u2b50", callback_data="rate:4"),
-            InlineKeyboardButton(text="5 \u2b50", callback_data="rate:5"),
+            InlineKeyboardButton(text="4 <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>", callback_data="rate:4"),
+            InlineKeyboardButton(text="5 <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>", callback_data="rate:5"),
         ],
         [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main")],
     ])

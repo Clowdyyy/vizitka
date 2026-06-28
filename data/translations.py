@@ -1,177 +1,177 @@
 WELCOME = {
     "ru": (
-        "👋 Привет! Меня зовут <b>Аббосхон</b>.\n"
-        "🔹 Python-разработчик и AI/ML инженер\n\n"
-        "🚀 Я создаю Telegram-ботов, работаю с LLM и автоматизирую процессы.\n\n"
-        "Выбери команду в меню, чтобы узнать больше 👇"
+        '<tg-emoji emoji-id="5458904472598095631">👋</tg-emoji> Привет! Меня зовут <b>Аббосхон</b>.\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Python-разработчик и AI/ML инженер\n\n'
+        '<tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji> Я создаю Telegram-ботов, работаю с LLM и автоматизирую процессы.\n\n'
+        'Выбери команду в меню, чтобы узнать больше <tg-emoji emoji-id="5231102735817918643">👇</tg-emoji>'
     ),
     "en": (
-        "👋 Hi! My name is <b>Abboskhon</b>.\n"
-        "🔹 Python developer and AI/ML engineer\n\n"
-        "🚀 I build Telegram bots, work with LLMs, and automate processes.\n\n"
-        "Pick a command from the menu to learn more 👇"
+        '<tg-emoji emoji-id="5458904472598095631">👋</tg-emoji> Hi! My name is <b>Abboskhon</b>.\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Python developer and AI/ML engineer\n\n'
+        '<tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji> I build Telegram bots, work with LLMs, and automate processes.\n\n'
+        'Pick a command from the menu to learn more <tg-emoji emoji-id="5231102735817918643">👇</tg-emoji>'
     ),
 }
 
 ABOUT = {
     "ru": (
-        "👤 <b>Обо мне</b>\n\n"
-        "• 🔹 Python-разработчик с опытом в AI/ML\n"
-        "• 🔹 Создаю Telegram-ботов на <code>Aiogram 3</code>\n"
-        "• 🔹 Работаю с LLM: <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n"
-        "• 🔹 Backend: <code>FastAPI</code>, <code>Streamlit</code>\n"
-        "• 🔹 БД: <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n"
-        "• 🔹 Инструменты: <code>Git</code>, <code>GitHub</code>, <code>SQLAlchemy</code>\n\n"
-        "💡 Всегда учусь новому и работаю над интересными проектами!"
+        '<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> <b>Обо мне</b>\n\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Python-разработчик с опытом в AI/ML\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Создаю Telegram-ботов на <code>Aiogram 3</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Работаю с LLM: <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Backend: <code>FastAPI</code>, <code>Streamlit</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> БД: <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Инструменты: <code>Git</code>, <code>GitHub</code>, <code>SQLAlchemy</code>\n\n'
+        '<tg-emoji emoji-id="5258216851472654189">💡</tg-emoji> Всегда учусь новому и работаю над интересными проектами!'
     ),
     "en": (
-        "👤 <b>About Me</b>\n\n"
-        "• 🔹 Python developer with AI/ML expertise\n"
-        "• 🔹 Building Telegram bots with <code>Aiogram 3</code>\n"
-        "• 🔹 Working with LLMs: <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n"
-        "• 🔹 Backend: <code>FastAPI</code>, <code>Streamlit</code>\n"
-        "• 🔹 Databases: <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n"
-        "• 🔹 Tools: <code>Git</code>, <code>GitHub</code>, <code>SQLAlchemy</code>\n\n"
-        "💡 Always learning and working on exciting projects!"
+        '<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> <b>About Me</b>\n\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Python developer with AI/ML expertise\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Building Telegram bots with <code>Aiogram 3</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Working with LLMs: <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Backend: <code>FastAPI</code>, <code>Streamlit</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Databases: <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n'
+        '• <tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> Tools: <code>Git</code>, <code>GitHub</code>, <code>SQLAlchemy</code>\n\n'
+        '<tg-emoji emoji-id="5258216851472654189">💡</tg-emoji> Always learning and working on exciting projects!'
     ),
 }
 
 HELP = {
     "ru": (
-        "❓ <b>Команды</b>\n\n"
-        "📌 /start — Приветствие и главное меню\n"
-        "📌 /help — Список команд (это сообщение)\n"
-        "📌 /about — Обо мне\n"
-        "📌 /stack — Мой стек технологий\n"
-        "📌 /projects — Мои проекты\n"
-        "📌 /contact — Связаться со мной\n"
-        "📌 /rate — Оценить бота\n"
-        "📌 /lang — Сменить язык 🌐\n\n"
-        "Используй команды, чтобы узнать больше! 🚀"
+        '<tg-emoji emoji-id="5382187118216879236">❓</tg-emoji> <b>Команды</b>\n\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /start — Приветствие и главное меню\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /help — Список команд (это сообщение)\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /about — Обо мне\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /stack — Мой стек технологий\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /projects — Мои проекты\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /contact — Связаться со мной\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /rate — Оценить бота\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /lang — Сменить язык <tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji>\n\n'
+        'Используй команды, чтобы узнать больше! <tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji>'
     ),
     "en": (
-        "❓ <b>Commands</b>\n\n"
-        "📌 /start — Welcome and main menu\n"
-        "📌 /help — Command list (this message)\n"
-        "📌 /about — About me\n"
-        "📌 /stack — My tech stack\n"
-        "📌 /projects — My projects\n"
-        "📌 /contact — Contact me\n"
-        "📌 /rate — Rate the bot\n"
-        "📌 /lang — Change language 🌐\n\n"
-        "Use commands to explore! 🚀"
+        '<tg-emoji emoji-id="5382187118216879236">❓</tg-emoji> <b>Commands</b>\n\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /start — Welcome and main menu\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /help — Command list (this message)\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /about — About me\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /stack — My tech stack\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /projects — My projects\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /contact — Contact me\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /rate — Rate the bot\n'
+        '<tg-emoji emoji-id="5258461531464539536">📌</tg-emoji> /lang — Change language <tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji>\n\n'
+        'Use commands to explore! <tg-emoji emoji-id="5372917041193828849">🚀</tg-emoji>'
     ),
 }
 
 STATS = {
     "ru": (
-        "📊 <b>Статистика бота</b>\n\n"
-        "👥 Пользователей: <b>{users}</b>\n"
-        "👀 Просмотров: <b>{views}</b>\n"
-        "💬 Оценок: <b>{ratings}</b>"
+        '<tg-emoji emoji-id="5231200819986047254">📊</tg-emoji> <b>Статистика бота</b>\n\n'
+        '<tg-emoji emoji-id="5258513401784573443">👥</tg-emoji> Пользователей: <b>{users}</b>\n'
+        '<tg-emoji emoji-id="5280881372418816002">👀</tg-emoji> Просмотров: <b>{views}</b>\n'
+        '<tg-emoji emoji-id="5260535596941582167">💬</tg-emoji> Оценок: <b>{ratings}</b>'
     ),
     "en": (
-        "📊 <b>Bot Statistics</b>\n\n"
-        "👥 Users: <b>{users}</b>\n"
-        "👀 Views: <b>{views}</b>\n"
-        "💬 Ratings: <b>{ratings}</b>"
+        '<tg-emoji emoji-id="5231200819986047254">📊</tg-emoji> <b>Bot Statistics</b>\n\n'
+        '<tg-emoji emoji-id="5258513401784573443">👥</tg-emoji> Users: <b>{users}</b>\n'
+        '<tg-emoji emoji-id="5280881372418816002">👀</tg-emoji> Views: <b>{views}</b>\n'
+        '<tg-emoji emoji-id="5260535596941582167">💬</tg-emoji> Ratings: <b>{ratings}</b>'
     ),
 }
 
 RATING = {
-    "ru": "⭐ Твоя оценка: <b>{stars}/5</b>",
-    "en": "⭐ Your rating: <b>{stars}/5</b>",
+    "ru": '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> Твоя оценка: <b>{stars}/5</b>',
+    "en": '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> Your rating: <b>{stars}/5</b>',
 }
 
 RATING_ASK = {
     "ru": (
-        "✍️ Оцени бота от 1 до 5:\n\n"
-        "1 — ⭐\n"
-        "2 — ⭐⭐\n"
-        "3 — ⭐⭐⭐\n"
-        "4 — ⭐⭐⭐⭐\n"
-        "5 — ⭐⭐⭐⭐⭐"
+        '<tg-emoji emoji-id="5877214659227946561">✍️</tg-emoji> Оцени бота от 1 до 5:\n\n'
+        "1 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "2 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "3 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "4 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "5 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>"
     ),
     "en": (
-        "✍️ Rate the bot from 1 to 5:\n\n"
-        "1 — ⭐\n"
-        "2 — ⭐⭐\n"
-        "3 — ⭐⭐⭐\n"
-        "4 — ⭐⭐⭐⭐\n"
-        "5 — ⭐⭐⭐⭐⭐"
+        '<tg-emoji emoji-id="5877214659227946561">✍️</tg-emoji> Rate the bot from 1 to 5:\n\n'
+        "1 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "2 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "3 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "4 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>\n"
+        "5 — <tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji><tg-emoji emoji-id=\"5258185631355378853\">⭐</tg-emoji>"
     ),
 }
 
 RATING_ALREADY = {
-    "ru": "✅ Ты уже поставил оценку: <b>{rating}/5</b>",
-    "en": "✅ You already rated: <b>{rating}/5</b>",
+    "ru": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> Ты уже поставил оценку: <b>{rating}/5</b>',
+    "en": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> You already rated: <b>{rating}/5</b>',
 }
 
 RATING_DENIED = {
-    "ru": "⛔ Оценка отменена.",
-    "en": "⛔ Rating cancelled.",
+    "ru": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> Оценка отменена.',
+    "en": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> Rating cancelled.',
 }
 
 STACK = {
     "ru": (
-        "🛠 <b>Мой стек технологий</b>\n\n"
-        "💻 <b>Языки:</b> <code>Python</code>, <code>Java</code>\n\n"
-        "🤖 <b>AI/ML:</b> <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n\n"
-        "⚙️ <b>Backend:</b> <code>FastAPI</code>, <code>Aiogram 3</code>, <code>Streamlit</code>\n\n"
-        "🗄 <b>Базы данных:</b> <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n\n"
-        "🔧 <b>Инструменты:</b> <code>SQLAlchemy</code>, <code>Git</code>, <code>GitHub</code>"
+        '<tg-emoji emoji-id="5988023995125993550">🛠</tg-emoji> <b>Мой стек технологий</b>\n\n'
+        '<tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> <b>Языки:</b> <code>Python</code>, <code>Java</code>\n\n'
+        '<tg-emoji emoji-id="5258093637450866522">🤖</tg-emoji> <b>AI/ML:</b> <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n\n'
+        '<tg-emoji emoji-id="5258096772776991776">⚙️</tg-emoji> <b>Backend:</b> <code>FastAPI</code>, <code>Aiogram 3</code>, <code>Streamlit</code>\n\n'
+        '<tg-emoji emoji-id="6321207771035338339">🗄</tg-emoji> <b>Базы данных:</b> <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n\n'
+        '<tg-emoji emoji-id="5988023995125993550">🔧</tg-emoji> <b>Инструменты:</b> <code>SQLAlchemy</code>, <code>Git</code>, <code>GitHub</code>'
     ),
     "en": (
-        "🛠 <b>My Tech Stack</b>\n\n"
-        "💻 <b>Languages:</b> <code>Python</code>, <code>Java</code>\n\n"
-        "🤖 <b>AI/ML:</b> <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n\n"
-        "⚙️ <b>Backend:</b> <code>FastAPI</code>, <code>Aiogram 3</code>, <code>Streamlit</code>\n\n"
-        "🗄 <b>Databases:</b> <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n\n"
-        "🔧 <b>Tools:</b> <code>SQLAlchemy</code>, <code>Git</code>, <code>GitHub</code>"
+        '<tg-emoji emoji-id="5988023995125993550">🛠</tg-emoji> <b>My Tech Stack</b>\n\n'
+        '<tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> <b>Languages:</b> <code>Python</code>, <code>Java</code>\n\n'
+        '<tg-emoji emoji-id="5258093637450866522">🤖</tg-emoji> <b>AI/ML:</b> <code>LangChain</code>, <code>Gemini API</code>, <code>Ollama</code>\n\n'
+        '<tg-emoji emoji-id="5258096772776991776">⚙️</tg-emoji> <b>Backend:</b> <code>FastAPI</code>, <code>Aiogram 3</code>, <code>Streamlit</code>\n\n'
+        '<tg-emoji emoji-id="6321207771035338339">🗄</tg-emoji> <b>Databases:</b> <code>PostgreSQL</code>, <code>ChromaDB</code>, <code>SQLite</code>\n\n'
+        '<tg-emoji emoji-id="5988023995125993550">🔧</tg-emoji> <b>Tools:</b> <code>SQLAlchemy</code>, <code>Git</code>, <code>GitHub</code>'
     ),
 }
 
 PROJECTS = {
     "ru": [
         {
-            "name": "📄 AI DOCUMENT ANALYST",
+            "name": '<tg-emoji emoji-id="5879679940391080021">📄</tg-emoji> AI DOCUMENT ANALYST',
             "desc": "ИИ для анализа документов — автоматическое извлечение данных и генерация отчётов.",
             "stack": ["Python", "LangChain", "Gemini API"],
         },
         {
-            "name": "🎫 AI TICKET AGENT",
+            "name": '<tg-emoji emoji-id="5418010521309815154">🎫</tg-emoji> AI TICKET AGENT',
             "desc": "ИИ-агент для обработки тикетов и автоматических ответов на обращения.",
             "stack": ["Python", "LangChain", "Ollama"],
         },
         {
-            "name": "🧠 NUTRIMIND BOT",
+            "name": '<tg-emoji emoji-id="5237799019329105246">🧠</tg-emoji> NUTRIMIND BOT',
             "desc": "Telegram-бот для контроля питания с ИИ-рекомендациями по рациону.",
             "stack": ["Python", "Aiogram 3", "Gemini API", "PostgreSQL"],
         },
         {
-            "name": "💻 PC CONTROL",
+            "name": '<tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> PC CONTROL',
             "desc": "Удалённое управление компьютером через Telegram-бот.",
             "stack": ["Python", "Aiogram 3", "SQLite"],
         },
     ],
     "en": [
         {
-            "name": "📄 AI DOCUMENT ANALYST",
+            "name": '<tg-emoji emoji-id="5879679940391080021">📄</tg-emoji> AI DOCUMENT ANALYST',
             "desc": "AI for document analysis — automatic data extraction and report generation.",
             "stack": ["Python", "LangChain", "Gemini API"],
         },
         {
-            "name": "🎫 AI TICKET AGENT",
+            "name": '<tg-emoji emoji-id="5418010521309815154">🎫</tg-emoji> AI TICKET AGENT',
             "desc": "AI agent for ticket processing and automated support responses.",
             "stack": ["Python", "LangChain", "Ollama"],
         },
         {
-            "name": "🧠 NUTRIMIND BOT",
+            "name": '<tg-emoji emoji-id="5237799019329105246">🧠</tg-emoji> NUTRIMIND BOT',
             "desc": "Telegram bot for diet tracking with AI-powered nutrition recommendations.",
             "stack": ["Python", "Aiogram 3", "Gemini API", "PostgreSQL"],
         },
         {
-            "name": "💻 PC CONTROL",
+            "name": '<tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> PC CONTROL',
             "desc": "Remote PC control via Telegram bot.",
             "stack": ["Python", "Aiogram 3", "SQLite"],
         },
@@ -179,56 +179,56 @@ PROJECTS = {
 }
 
 CONTACT_PROMPT = {
-    "ru": "📩 Напиши сообщение для меня:",
-    "en": "📩 Write a message for me:",
+    "ru": '<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> Напиши сообщение для меня:',
+    "en": '<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> Write a message for me:',
 }
 
 CONTACT_SENT = {
-    "ru": "✅ Сообщение отправлено! Спасибо за обратную связь.",
-    "en": "✅ Message sent! Thanks for the feedback.",
+    "ru": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> Сообщение отправлено! Спасибо за обратную связь.',
+    "en": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> Message sent! Thanks for the feedback.',
 }
 
 NO_ACCESS = {
-    "ru": "⛔ У тебя нет доступа к этой функции.",
-    "en": "⛔ You don't have access to this feature.",
+    "ru": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> У тебя нет доступа к этой функции.',
+    "en": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> You don\'t have access to this feature.',
 }
 
 LANG_SELECTED = {
-    "ru": "🌐 Язык изменён на <b>Русский</b>.",
-    "en": "🌐 Language changed to <b>English</b>.",
+    "ru": '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Язык изменён на <b>Русский</b>.',
+    "en": '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Language changed to <b>English</b>.',
 }
 
 LANG_CHOICE = {
-    "ru": "\U0001f310 \u0412\u044b\u0431\u0435\u0440\u0438 \u044f\u0437\u044b\u043a:",
-    "en": "\U0001f310 Choose language:",
+    "ru": '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Выбери язык:',
+    "en": '<tg-emoji emoji-id="5256211458227715194">🌐</tg-emoji> Choose language:',
 }
 
 NO_ACCESS_CMD = {
-    "ru": "\u26d4 \u0423 \u0432\u0430\u0441 \u043d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u0435.",
-    "en": "\u26d4 You don't have access to this command.",
+    "ru": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> У вас нет доступа к этой команде.',
+    "en": '<tg-emoji emoji-id="5275969776668134187">⛔</tg-emoji> You don\'t have access to this command.',
 }
 
 ADMIN_REPLY_SENT = {
-    "ru": "\u2705 \u041e\u0442\u0432\u0435\u0442 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d.",
-    "en": "\u2705 Reply sent.",
+    "ru": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> Ответ отправлен.',
+    "en": '<tg-emoji emoji-id="5260416304224936047">✅</tg-emoji> Reply sent.',
 }
 
 ADMIN_REPLY_FAIL = {
-    "ru": "\u274c \u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c.",
-    "en": "\u274c Failed to send reply.",
+    "ru": '<tg-emoji emoji-id="5388785832956016892">❌</tg-emoji> Не удалось отправить.',
+    "en": '<tg-emoji emoji-id="5388785832956016892">❌</tg-emoji> Failed to send reply.',
 }
 
 NO_USERNAME = {
-    "ru": "\u043d\u0435\u0442 \u044e\u0437\u0435\u0440\u043d\u0435\u0439\u043c\u0430",
+    "ru": "нет юзернейма",
     "en": "no username",
 }
 
 UNKNOWN = {
-    "ru": "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e",
+    "ru": "Неизвестно",
     "en": "Unknown",
 }
 
 NOT_RATED = {
-    "ru": "\u043d\u0435 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043b",
+    "ru": "не голосовал",
     "en": "not rated",
 }

@@ -47,7 +47,7 @@ async def cmd_start(message: Message, state):
             await message.bot.send_message(
                 chat_id=YOUR_TELEGRAM_ID,
                 text=(
-                    f"👤 <b>Новый запуск!</b>\n\n"
+                    f'<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> <b>Новый запуск!</b>\n\n'
                     f"Имя: <b>{user.full_name}</b>\n"
                     f"Юзер: {uname}\n"
                     f"ID: <code>{user.id}</code>"
@@ -207,11 +207,11 @@ async def handle_contact_message(message: Message, state: FSMContext):
     uname = f"@{user.username}" if user.username else NO_USERNAME[lang]
 
     admin_text = (
-        f"\U0001f4e9 <b>\u041d\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f!</b>\n\n"
-        f"\U0001f464 <b>{name}</b> ({uname})\n"
-        f"\U0001f194 ID: <code>{user.id}</code>\n\n"
-        f"\U0001f4ac {message.text}\n\n"
-        f"<i>\u041e\u0442\u0432\u0435\u0442\u044c\u0442\u0435 \u043d\u0430 \u044d\u0442\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435, \u0447\u0442\u043e\u0431\u044b \u043f\u0435\u0440\u0435\u0441\u043b\u0430\u0442\u044c \u043e\u0442\u0432\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044e.</i>"
+        f'<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> <b>Новое сообщение от пользователя!</b>\n\n'
+        f'<tg-emoji emoji-id="5258011929993026890">👤</tg-emoji> <b>{name}</b> ({uname})\n'
+        f'<tg-emoji emoji-id="5936017305585586269">🆔</tg-emoji> ID: <code>{user.id}</code>\n\n'
+        f'<tg-emoji emoji-id="5260535596941582167">💬</tg-emoji> {message.text}\n\n'
+        f"<i>Ответьте на это сообщение, чтобы переслать ответ пользователю.</i>"
     )
 
     try:
@@ -234,7 +234,7 @@ async def handle_admin_reply(message: Message):
     try:
         await message.bot.send_message(
             chat_id=user_id,
-            text=f"\U0001f4e9 <b>\u041e\u0442\u0432\u0435\u0442 \u043e\u0442 \u0430\u0432\u0442\u043e\u0440\u0430:</b>\n\n{message.text}",
+            text=f'<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> <b>Ответ от автора:</b>\n\n{message.text}',
         )
         lang = get_lang(user_id)
         await message.answer(ADMIN_REPLY_SENT[lang], reply_markup=get_main_keyboard(lang))
