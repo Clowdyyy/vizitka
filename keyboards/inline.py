@@ -2,10 +2,10 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 def _back(lang):
-    return "⬅️ Назад в меню" if lang == "ru" else "⬅️ Back to menu"
+    return "Назад в меню" if lang == "ru" else "Back to menu"
 
 def _back_short(lang):
-    return "⬅️ Назад" if lang == "ru" else "⬅️ Back"
+    return "Назад" if lang == "ru" else "Back"
 
 
 def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
@@ -13,30 +13,30 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     lang_text = "🌐 Язык" if lang == "ru" else "🌐 Language"
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="✨ Мои проекты" if lang == "ru" else "✨ Projects",
+            text="Мои проекты" if lang == "ru" else "Projects",
             callback_data="start_carousel",
             icon_custom_emoji_id="5325547803936572038",
             button_color="primary",
         )],
         [InlineKeyboardButton(
-            text="🛠️ Стек" if lang == "ru" else "🛠️ Stack",
+            text="Стек" if lang == "ru" else "Stack",
             callback_data="show_stack",
             icon_custom_emoji_id="5988023995125993550",
             button_color="secondary",
         )],
         [InlineKeyboardButton(
-            text="👤 Обо мне" if lang == "ru" else "👤 About",
+            text="Обо мне" if lang == "ru" else "About",
             callback_data="show_about",
             icon_custom_emoji_id="5258011929993026890",
         )],
         [InlineKeyboardButton(
-            text="✉️ Написать" if lang == "ru" else "✉️ Write",
+            text="Написать" if lang == "ru" else "Write",
             callback_data="write_to_author",
             icon_custom_emoji_id="5472239203590888751",
             button_color="primary",
         )],
         [InlineKeyboardButton(
-            text="📊 Статистика" if lang == "ru" else "📊 Stats",
+            text="Статистика" if lang == "ru" else "Stats",
             callback_data="show_stats",
             icon_custom_emoji_id="5231200819986047254",
             button_color="secondary",
@@ -48,7 +48,7 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
         )],
         [
             InlineKeyboardButton(
-                text="🌐 Сайт" if lang == "ru" else "🌐 Website",
+                text="Сайт" if lang == "ru" else "Website",
                 url="https://clowdy.is-a.dev/",
                 icon_custom_emoji_id="5256211458227715194",
                 button_color="primary",
@@ -87,7 +87,7 @@ def get_carousel_keyboard(index: int) -> InlineKeyboardMarkup:
 
     buttons.append([
         InlineKeyboardButton(
-            text="👑 Меню" if lang == "ru" else "👑 Menu",
+            text="Меню" if lang == "ru" else "Menu",
             callback_data="back_to_main",
             icon_custom_emoji_id="5433758796289685818",
         )
@@ -100,12 +100,12 @@ def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     from config import YOUR_TELEGRAM_ID
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="💬 В личку" if lang == "ru" else "💬 DM",
+            text="В личку" if lang == "ru" else "DM",
             url=f"tg://user?id={YOUR_TELEGRAM_ID}",
             icon_custom_emoji_id="5260535596941582167",
         )],
         [InlineKeyboardButton(
-            text="⭐ Оценить" if lang == "ru" else "⭐ Rate",
+            text="Оценить" if lang == "ru" else "Rate",
             callback_data="show_rating",
             icon_custom_emoji_id="5258185631355378853",
             button_color="primary",
@@ -121,7 +121,7 @@ def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
 def get_contact_form_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="⬅️ Отмена" if lang == "ru" else "⬅️ Cancel",
+            text="Отмена" if lang == "ru" else "Cancel",
             callback_data="back_to_main",
             icon_custom_emoji_id="5258236805890710909",
         )]
@@ -151,17 +151,17 @@ def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineK
 def get_lang_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="🇷🇺 Русский",
+            text="Русский",
             callback_data="set_lang:ru",
             icon_custom_emoji_id="5449408995691341691",
         )],
         [InlineKeyboardButton(
-            text="🇬🇧 English",
+            text="English",
             callback_data="set_lang:en",
             icon_custom_emoji_id="5202196682497859879",
         )],
         [InlineKeyboardButton(
-            text="⬅️ Назад",
+            text="Назад",
             callback_data="back_to_main",
             icon_custom_emoji_id="5258236805890710909",
         )],
@@ -171,13 +171,13 @@ def get_lang_keyboard() -> InlineKeyboardMarkup:
 def get_rating_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="1 ⭐", callback_data="rate:1", icon_custom_emoji_id="5258185631355378853"),
-            InlineKeyboardButton(text="2 ⭐", callback_data="rate:2", icon_custom_emoji_id="5258185631355378853"),
-            InlineKeyboardButton(text="3 ⭐", callback_data="rate:3", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="1", callback_data="rate:1", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="2", callback_data="rate:2", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="3", callback_data="rate:3", icon_custom_emoji_id="5258185631355378853"),
         ],
         [
-            InlineKeyboardButton(text="4 ⭐", callback_data="rate:4", icon_custom_emoji_id="5258185631355378853"),
-            InlineKeyboardButton(text="5 ⭐", callback_data="rate:5", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="4", callback_data="rate:4", icon_custom_emoji_id="5258185631355378853"),
+            InlineKeyboardButton(text="5", callback_data="rate:5", icon_custom_emoji_id="5258185631355378853"),
         ],
         [InlineKeyboardButton(
             text=_back_short(lang),
