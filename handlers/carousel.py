@@ -24,7 +24,7 @@ def format_project(project: dict) -> str:
     return (
         f"{prefix}<b>{project['name']}</b>\n\n"
         f"{project['desc']}\n\n"
-        f"\u2699\ufe0f <b>\u0421\u0442\u0435\u043a:</b> {stack_tags}"
+        f'<tg-emoji emoji-id="5258096772776991776">⚙️</tg-emoji> <b>Стек:</b> {stack_tags}'
     )
 
 
