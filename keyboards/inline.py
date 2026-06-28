@@ -1,8 +1,7 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pydantic import Field
 
-InlineKeyboardButton.model_fields["icon_custom_emoji_id"] = Field(None, description="Premium emoji ID")
-InlineKeyboardButton.model_fields["button_color"] = Field(None, description="Button color")
+InlineKeyboardButton.model_fields["icon_custom_emoji_id"] = Field(None)
 InlineKeyboardButton.model_config["extra"] = "allow"
 
 
@@ -19,30 +18,25 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Мои проекты" if lang == "ru" else "Projects",
             callback_data="start_carousel",
-            icon_custom_emoji_id="5325547803936572038",
-            button_color="primary")],
+            icon_custom_emoji_id="5325547803936572038")],
         [InlineKeyboardButton(text="Стек" if lang == "ru" else "Stack",
             callback_data="show_stack",
-            icon_custom_emoji_id="5988023995125993550",
-            button_color="secondary")],
+            icon_custom_emoji_id="5988023995125993550")],
         [InlineKeyboardButton(text="Обо мне" if lang == "ru" else "About",
             callback_data="show_about",
             icon_custom_emoji_id="5258011929993026890")],
         [InlineKeyboardButton(text="Написать" if lang == "ru" else "Write",
             callback_data="write_to_author",
-            icon_custom_emoji_id="5472239203590888751",
-            button_color="primary")],
+            icon_custom_emoji_id="5472239203590888751")],
         [InlineKeyboardButton(text="Статистика" if lang == "ru" else "Stats",
             callback_data="show_stats",
-            icon_custom_emoji_id="5231200819986047254",
-            button_color="secondary")],
+            icon_custom_emoji_id="5231200819986047254")],
         [InlineKeyboardButton(text=lang_text,
             callback_data="change_lang",
             icon_custom_emoji_id="5256211458227715194")],
         [InlineKeyboardButton(text="Сайт" if lang == "ru" else "Website",
             url="https://clowdy.is-a.dev/",
-            icon_custom_emoji_id="5256211458227715194",
-            button_color="primary")],
+            icon_custom_emoji_id="5256211458227715194")],
         [
             InlineKeyboardButton(text="GitHub", url="https://github.com/Clowdyyy"),
             InlineKeyboardButton(text="TikTok", url="https://www.tiktok.com/@clowdyxzz"),
@@ -90,8 +84,7 @@ def get_contact_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
             icon_custom_emoji_id="5260535596941582167")],
         [InlineKeyboardButton(text="Оценить" if lang == "ru" else "Rate",
             callback_data="show_rating",
-            icon_custom_emoji_id="5258185631355378853",
-            button_color="primary")],
+            icon_custom_emoji_id="5258185631355378853")],
         [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main",
             icon_custom_emoji_id="5258236805890710909")],
     ])
