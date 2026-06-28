@@ -79,9 +79,9 @@ def get_carousel_keyboard(index: int, lang: str = "ru") -> InlineKeyboardMarkup:
 
     buttons = [
         [
-            InlineKeyboardButton(text="◀️", callback_data=f"carousel_goto:{prev_idx}", icon_custom_emoji_id="5256247952564825322"),
+            InlineKeyboardButton(text=" ", callback_data=f"carousel_goto:{prev_idx}", icon_custom_emoji_id="5256247952564825322"),
             InlineKeyboardButton(text=f"{index + 1} / {total}", callback_data="noop"),
-            InlineKeyboardButton(text="▶️", callback_data=f"carousel_goto:{next_idx}", icon_custom_emoji_id="5255835489675519149"),
+            InlineKeyboardButton(text=" ", callback_data=f"carousel_goto:{next_idx}", icon_custom_emoji_id="5255835489675519149"),
         ]
     ]
 
@@ -133,10 +133,10 @@ def get_stats_keyboard(page: int, total_pages: int, lang: str = "ru") -> InlineK
 
     nav_row = []
     if page > 1:
-        nav_row.append(InlineKeyboardButton(text="◀️", callback_data=f"stats_page:{page - 1}", icon_custom_emoji_id="5256247952564825322"))
+        nav_row.append(InlineKeyboardButton(text=" ", callback_data=f"stats_page:{page - 1}", icon_custom_emoji_id="5256247952564825322"))
     nav_row.append(InlineKeyboardButton(text=f"{page} / {total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav_row.append(InlineKeyboardButton(text="▶️", callback_data=f"stats_page:{page + 1}", icon_custom_emoji_id="5255835489675519149"))
+        nav_row.append(InlineKeyboardButton(text=" ", callback_data=f"stats_page:{page + 1}", icon_custom_emoji_id="5255835489675519149"))
     buttons.append(nav_row)
 
     buttons.append([InlineKeyboardButton(
