@@ -31,7 +31,7 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="Статистика" if lang == "ru" else "Stats",
             callback_data="show_stats",
             icon_custom_emoji_id="5231200819986047254",
-            style='danger')],
+            style='primary')],
         [InlineKeyboardButton(text=lang_text,
             callback_data="change_lang",
             icon_custom_emoji_id="5256211458227715194")],
@@ -39,8 +39,8 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
             url="https://clowdy.is-a.dev/",
             icon_custom_emoji_id="5256211458227715194")],
         [
-            InlineKeyboardButton(text="GitHub", url="https://github.com/Clowdyyy"),
-            InlineKeyboardButton(text="TikTok", url="https://www.tiktok.com/@clowdyxzz"),
+            InlineKeyboardButton(text="GitHub", url="https://github.com/Clowdyyy", icon_custom_emoji_id="5417836094098007862"),
+            InlineKeyboardButton(text="TikTok", url="https://www.tiktok.com/@clowdyxzz", icon_custom_emoji_id="5300793841530466191"),
         ],
     ])
 
