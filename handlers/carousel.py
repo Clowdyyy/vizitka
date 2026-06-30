@@ -37,7 +37,7 @@ async def start_carousel(callback: CallbackQuery, state):
     lang = get_lang(callback.from_user.id)
     projects = PROJECTS.get(lang, OldProjects)
     text = format_project(projects[0])
-    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_carousel_keyboard(0))
+    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_carousel_keyboard(0, lang))
 
 
 @router.callback_query(F.data.startswith("carousel_goto:"))
@@ -59,4 +59,4 @@ async def carousel_goto(callback: CallbackQuery, state):
     await state.update_data(index=index)
 
     text = format_project(projects[index])
-    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_carousel_keyboard(index))
+    await safe_edit(callback.message, text=text, caption=text, reply_markup=get_carousel_keyboard(index, lang))
