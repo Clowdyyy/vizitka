@@ -25,6 +25,9 @@ def get_main_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="Обо мне" if lang == "ru" else "About",
             callback_data="show_about",
             icon_custom_emoji_id="5258011929993026890")],
+        [InlineKeyboardButton(text="Услуги" if lang == "ru" else "Services",
+            callback_data="show_services",
+            icon_custom_emoji_id="5258096772776991776")],
         [InlineKeyboardButton(text="Написать" if lang == "ru" else "Write",
             callback_data="write_to_author",
             icon_custom_emoji_id="5472239203590888751")],
@@ -144,6 +147,16 @@ def get_rating_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
             InlineKeyboardButton(text="5", callback_data="rate:5",
                 icon_custom_emoji_id="5258185631355378853"),
         ],
+        [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main",
+            icon_custom_emoji_id="5258236805890710909")],
+    ])
+
+
+def get_services_keyboard(lang: str = "ru") -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Написать" if lang == "ru" else "Write",
+            callback_data="write_to_author",
+            icon_custom_emoji_id="5472239203590888751")],
         [InlineKeyboardButton(text=_back_short(lang), callback_data="back_to_main",
             icon_custom_emoji_id="5258236805890710909")],
     ])

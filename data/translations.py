@@ -232,3 +232,42 @@ NOT_RATED = {
     "ru": "не голосовал",
     "en": "not rated",
 }
+
+SERVICES = {
+    "ru": (
+        '<tg-emoji emoji-id="5258096772776991776">⚙️</tg-emoji> <b>Разработка Telegram-ботов под ключ</b>\n\n'
+        'Создаю ботов любой сложности — от простых утилит до интеллектуальных систем с AI.\n\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> <b>Что я делаю:</b>\n'
+        '• Боты для бизнеса и автоматизации\n'
+        '• Интеграция с AI/LLM (ChatGPT, Gemini, Ollama)\n'
+        '• CRM, оплата, рассылки, уведомления\n'
+        '• Парсинг данных и аналитика\n'
+        '• Мини-приложения и карусели\n\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> <b>Примеры работ:</b>\n'
+        '• <tg-emoji emoji-id="6334809030518638180">💠</tg-emoji> AI Document Analyst — анализ документов с ИИ\n'
+        '• <tg-emoji emoji-id="5807465992363710697">💎</tg-emoji> AI Ticket Agent — умная обработка тикетов\n'
+        '• <tg-emoji emoji-id="5935989710420709120">🍎</tg-emoji> NutriMind Bot — трекинг калорий с AI\n'
+        '• <tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> PC Control — удалённое управление ПК\n\n'
+        '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> <b>Цены:</b> Договорные. Стоимость зависит от сложности проекта.\n'
+        'Обсудим задачу — подберём оптимальное решение.\n\n'
+        '<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> <b>Напиши мне</b>, чтобы обсудить твой проект!'
+    ),
+    "en": (
+        '<tg-emoji emoji-id="5258096772776991776">⚙️</tg-emoji> <b>Custom Telegram Bot Development</b>\n\n'
+        'I build bots of any complexity — from simple utilities to intelligent AI systems.\n\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> <b>What I do:</b>\n'
+        '• Business & automation bots\n'
+        '• AI/LLM integration (ChatGPT, Gemini, Ollama)\n'
+        '• CRM, payments, newsletters, notifications\n'
+        '• Data scraping & analytics\n'
+        '• Mini-apps & carousels\n\n'
+        '<tg-emoji emoji-id="5296376222853377734">🔹</tg-emoji> <b>Portfolio:</b>\n'
+        '• <tg-emoji emoji-id="6334809030518638180">💠</tg-emoji> AI Document Analyst — AI-powered document analysis\n'
+        '• <tg-emoji emoji-id="5807465992363710697">💎</tg-emoji> AI Ticket Agent — smart ticket processing\n'
+        '• <tg-emoji emoji-id="5935989710420709120">🍎</tg-emoji> NutriMind Bot — AI nutrition tracking\n'
+        '• <tg-emoji emoji-id="5879609898064415920">💻</tg-emoji> PC Control — remote PC management\n\n'
+        '<tg-emoji emoji-id="5258185631355378853">⭐</tg-emoji> <b>Pricing:</b> Negotiable. Depends on project complexity.\n'
+        "Let's discuss your task — we'll find the optimal solution.\n\n"
+        '<tg-emoji emoji-id="5472239203590888751">📩</tg-emoji> <b>Write to me</b> to discuss your project!'
+    ),
+}

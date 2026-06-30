@@ -9,7 +9,7 @@ from config import BANNER_FILE, YOUR_TELEGRAM_ID
 from data.translations import (
     WELCOME, ABOUT, HELP, CONTACT_PROMPT, CONTACT_SENT,
     LANG_CHOICE, LANG_SELECTED, NO_ACCESS_CMD, ADMIN_REPLY_SENT,
-    ADMIN_REPLY_FAIL, NO_USERNAME, UNKNOWN, NOT_RATED,
+    ADMIN_REPLY_FAIL, NO_USERNAME, UNKNOWN, NOT_RATED, SERVICES,
 )
 from keyboards.inline import (
     get_main_keyboard,
@@ -17,6 +17,7 @@ from keyboards.inline import (
     get_stats_keyboard,
     get_contact_form_keyboard,
     get_lang_keyboard,
+    get_services_keyboard,
 )
 from utils import simulate_typing, is_user_rate_limited, safe_edit
 from handlers.rating import track_user, load_stats, save_stats, get_lang, set_lang
@@ -163,6 +164,13 @@ async def show_about(callback: CallbackQuery):
     await callback.answer()
     lang = get_lang(callback.from_user.id)
     await safe_edit(callback.message, text=ABOUT[lang], caption=ABOUT[lang], reply_markup=get_contact_keyboard(lang))
+
+
+@router.callback_query(F.data == "show_services")
+async def show_services(callback: CallbackQuery):
+    await callback.answer()
+    lang = get_lang(callback.from_user.id)
+    await safe_edit(callback.message, text=SERVICES[lang], caption=SERVICES[lang], reply_markup=get_services_keyboard(lang))
 
 
 @router.callback_query(F.data == "back_to_main")
